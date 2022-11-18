@@ -1,0 +1,731 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6640CF312927A9130093EF7A /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF302927A9130093EF7A /* Tests_iOS.swift */; };
+		6640CF332927A9130093EF7A /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF322927A9130093EF7A /* Tests_iOSLaunchTests.swift */; };
+		6640CF3D2927A9130093EF7A /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF3C2927A9130093EF7A /* Tests_macOS.swift */; };
+		6640CF3F2927A9130093EF7A /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF3E2927A9130093EF7A /* Tests_macOSLaunchTests.swift */; };
+		6640CF402927A9130093EF7A /* basketballGameStatsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF152927A9100093EF7A /* basketballGameStatsTracker.xcdatamodeld */; };
+		6640CF412927A9130093EF7A /* basketballGameStatsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF152927A9100093EF7A /* basketballGameStatsTracker.xcdatamodeld */; };
+		6640CF422927A9130093EF7A /* basketballGameStatsTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF172927A9100093EF7A /* basketballGameStatsTrackerApp.swift */; };
+		6640CF432927A9130093EF7A /* basketballGameStatsTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF172927A9100093EF7A /* basketballGameStatsTrackerApp.swift */; };
+		6640CF442927A9130093EF7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF182927A9100093EF7A /* ContentView.swift */; };
+		6640CF452927A9130093EF7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF182927A9100093EF7A /* ContentView.swift */; };
+		6640CF462927A9130093EF7A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF192927A9100093EF7A /* Persistence.swift */; };
+		6640CF472927A9130093EF7A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6640CF192927A9100093EF7A /* Persistence.swift */; };
+		6640CF482927A9130093EF7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6640CF1A2927A9130093EF7A /* Assets.xcassets */; };
+		6640CF492927A9130093EF7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6640CF1A2927A9130093EF7A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6640CF2D2927A9130093EF7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6640CF102927A90F0093EF7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6640CF1E2927A9130093EF7A;
+			remoteInfo = "basketballGameStatsTracker (iOS)";
+		};
+		6640CF392927A9130093EF7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6640CF102927A90F0093EF7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6640CF242927A9130093EF7A;
+			remoteInfo = "basketballGameStatsTracker (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6640CF162927A9100093EF7A /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		6640CF172927A9100093EF7A /* basketballGameStatsTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = basketballGameStatsTrackerApp.swift; sourceTree = "<group>"; };
+		6640CF182927A9100093EF7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6640CF192927A9100093EF7A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		6640CF1A2927A9130093EF7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6640CF1F2927A9130093EF7A /* basketballGameStatsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basketballGameStatsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6640CF252927A9130093EF7A /* basketballGameStatsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basketballGameStatsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6640CF272927A9130093EF7A /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		6640CF2C2927A9130093EF7A /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6640CF302927A9130093EF7A /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		6640CF322927A9130093EF7A /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		6640CF382927A9130093EF7A /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6640CF3C2927A9130093EF7A /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		6640CF3E2927A9130093EF7A /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6640CF1C2927A9130093EF7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF222927A9130093EF7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF292927A9130093EF7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF352927A9130093EF7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6640CF0F2927A90F0093EF7A = {
+			isa = PBXGroup;
+			children = (
+				6640CF142927A90F0093EF7A /* Shared */,
+				6640CF262927A9130093EF7A /* macOS */,
+				6640CF2F2927A9130093EF7A /* Tests iOS */,
+				6640CF3B2927A9130093EF7A /* Tests macOS */,
+				6640CF202927A9130093EF7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6640CF142927A90F0093EF7A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6640CF172927A9100093EF7A /* basketballGameStatsTrackerApp.swift */,
+				6640CF182927A9100093EF7A /* ContentView.swift */,
+				6640CF192927A9100093EF7A /* Persistence.swift */,
+				6640CF1A2927A9130093EF7A /* Assets.xcassets */,
+				6640CF152927A9100093EF7A /* basketballGameStatsTracker.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		6640CF202927A9130093EF7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6640CF1F2927A9130093EF7A /* basketballGameStatsTracker.app */,
+				6640CF252927A9130093EF7A /* basketballGameStatsTracker.app */,
+				6640CF2C2927A9130093EF7A /* Tests iOS.xctest */,
+				6640CF382927A9130093EF7A /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6640CF262927A9130093EF7A /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				6640CF272927A9130093EF7A /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		6640CF2F2927A9130093EF7A /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6640CF302927A9130093EF7A /* Tests_iOS.swift */,
+				6640CF322927A9130093EF7A /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		6640CF3B2927A9130093EF7A /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				6640CF3C2927A9130093EF7A /* Tests_macOS.swift */,
+				6640CF3E2927A9130093EF7A /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6640CF1E2927A9130093EF7A /* basketballGameStatsTracker (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6640CF4C2927A9130093EF7A /* Build configuration list for PBXNativeTarget "basketballGameStatsTracker (iOS)" */;
+			buildPhases = (
+				6640CF1B2927A9130093EF7A /* Sources */,
+				6640CF1C2927A9130093EF7A /* Frameworks */,
+				6640CF1D2927A9130093EF7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "basketballGameStatsTracker (iOS)";
+			productName = "basketballGameStatsTracker (iOS)";
+			productReference = 6640CF1F2927A9130093EF7A /* basketballGameStatsTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6640CF242927A9130093EF7A /* basketballGameStatsTracker (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6640CF4F2927A9130093EF7A /* Build configuration list for PBXNativeTarget "basketballGameStatsTracker (macOS)" */;
+			buildPhases = (
+				6640CF212927A9130093EF7A /* Sources */,
+				6640CF222927A9130093EF7A /* Frameworks */,
+				6640CF232927A9130093EF7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "basketballGameStatsTracker (macOS)";
+			productName = "basketballGameStatsTracker (macOS)";
+			productReference = 6640CF252927A9130093EF7A /* basketballGameStatsTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6640CF2B2927A9130093EF7A /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6640CF522927A9130093EF7A /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				6640CF282927A9130093EF7A /* Sources */,
+				6640CF292927A9130093EF7A /* Frameworks */,
+				6640CF2A2927A9130093EF7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6640CF2E2927A9130093EF7A /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 6640CF2C2927A9130093EF7A /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		6640CF372927A9130093EF7A /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6640CF552927A9130093EF7A /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				6640CF342927A9130093EF7A /* Sources */,
+				6640CF352927A9130093EF7A /* Frameworks */,
+				6640CF362927A9130093EF7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6640CF3A2927A9130093EF7A /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 6640CF382927A9130093EF7A /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6640CF102927A90F0093EF7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					6640CF1E2927A9130093EF7A = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					6640CF242927A9130093EF7A = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					6640CF2B2927A9130093EF7A = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 6640CF1E2927A9130093EF7A;
+					};
+					6640CF372927A9130093EF7A = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 6640CF242927A9130093EF7A;
+					};
+				};
+			};
+			buildConfigurationList = 6640CF132927A90F0093EF7A /* Build configuration list for PBXProject "basketballGameStatsTracker" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6640CF0F2927A90F0093EF7A;
+			productRefGroup = 6640CF202927A9130093EF7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6640CF1E2927A9130093EF7A /* basketballGameStatsTracker (iOS) */,
+				6640CF242927A9130093EF7A /* basketballGameStatsTracker (macOS) */,
+				6640CF2B2927A9130093EF7A /* Tests iOS */,
+				6640CF372927A9130093EF7A /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6640CF1D2927A9130093EF7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF482927A9130093EF7A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF232927A9130093EF7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF492927A9130093EF7A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF2A2927A9130093EF7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF362927A9130093EF7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6640CF1B2927A9130093EF7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF402927A9130093EF7A /* basketballGameStatsTracker.xcdatamodeld in Sources */,
+				6640CF462927A9130093EF7A /* Persistence.swift in Sources */,
+				6640CF422927A9130093EF7A /* basketballGameStatsTrackerApp.swift in Sources */,
+				6640CF442927A9130093EF7A /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF212927A9130093EF7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF412927A9130093EF7A /* basketballGameStatsTracker.xcdatamodeld in Sources */,
+				6640CF472927A9130093EF7A /* Persistence.swift in Sources */,
+				6640CF432927A9130093EF7A /* basketballGameStatsTrackerApp.swift in Sources */,
+				6640CF452927A9130093EF7A /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF282927A9130093EF7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF332927A9130093EF7A /* Tests_iOSLaunchTests.swift in Sources */,
+				6640CF312927A9130093EF7A /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6640CF342927A9130093EF7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6640CF3F2927A9130093EF7A /* Tests_macOSLaunchTests.swift in Sources */,
+				6640CF3D2927A9130093EF7A /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6640CF2E2927A9130093EF7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6640CF1E2927A9130093EF7A /* basketballGameStatsTracker (iOS) */;
+			targetProxy = 6640CF2D2927A9130093EF7A /* PBXContainerItemProxy */;
+		};
+		6640CF3A2927A9130093EF7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6640CF242927A9130093EF7A /* basketballGameStatsTracker (macOS) */;
+			targetProxy = 6640CF392927A9130093EF7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6640CF4A2927A9130093EF7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6640CF4B2927A9130093EF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		6640CF4D2927A9130093EF7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.swiftui.basketballGameStatsTracker;
+				PRODUCT_NAME = basketballGameStatsTracker;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6640CF4E2927A9130093EF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.swiftui.basketballGameStatsTracker;
+				PRODUCT_NAME = basketballGameStatsTracker;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6640CF502927A9130093EF7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.swiftui.basketballGameStatsTracker;
+				PRODUCT_NAME = basketballGameStatsTracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		6640CF512927A9130093EF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fan.swiftui.basketballGameStatsTracker;
+				PRODUCT_NAME = basketballGameStatsTracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		6640CF532927A9130093EF7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fan.swiftui.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "basketballGameStatsTracker (iOS)";
+			};
+			name = Debug;
+		};
+		6640CF542927A9130093EF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fan.swiftui.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "basketballGameStatsTracker (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6640CF562927A9130093EF7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fan.swiftui.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "basketballGameStatsTracker (macOS)";
+			};
+			name = Debug;
+		};
+		6640CF572927A9130093EF7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 26C2NZDPQR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.fan.swiftui.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "basketballGameStatsTracker (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6640CF132927A90F0093EF7A /* Build configuration list for PBXProject "basketballGameStatsTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6640CF4A2927A9130093EF7A /* Debug */,
+				6640CF4B2927A9130093EF7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6640CF4C2927A9130093EF7A /* Build configuration list for PBXNativeTarget "basketballGameStatsTracker (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6640CF4D2927A9130093EF7A /* Debug */,
+				6640CF4E2927A9130093EF7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6640CF4F2927A9130093EF7A /* Build configuration list for PBXNativeTarget "basketballGameStatsTracker (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6640CF502927A9130093EF7A /* Debug */,
+				6640CF512927A9130093EF7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6640CF522927A9130093EF7A /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6640CF532927A9130093EF7A /* Debug */,
+				6640CF542927A9130093EF7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6640CF552927A9130093EF7A /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6640CF562927A9130093EF7A /* Debug */,
+				6640CF572927A9130093EF7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6640CF152927A9100093EF7A /* basketballGameStatsTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6640CF162927A9100093EF7A /* Shared.xcdatamodel */,
+			);
+			currentVersion = 6640CF162927A9100093EF7A /* Shared.xcdatamodel */;
+			path = basketballGameStatsTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6640CF102927A90F0093EF7A /* Project object */;
+}
