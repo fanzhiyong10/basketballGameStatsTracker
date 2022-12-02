@@ -47,6 +47,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
+                .onTapGesture {
+                    print("P1")
+                    gameFromViewModel.periond_highlight.insert(0)
+                }
 
             // 第2小节
             Text(count_period >= 2 ? (index == 0 ? String(self.gameFromViewModel.periodDataOfMyTeamFromViewModels[1].score) : String(self.gameFromViewModel.periodDataOfOpponentTeamFromViewModels[1].score)) : "-")
@@ -54,6 +58,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .frame(width: columnWidths[1], alignment: .center)
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
+                }
+                .onTapGesture {
+                    print("P2")
+                    gameFromViewModel.periond_highlight.insert(1)
                 }
 
             // 第3小节
@@ -63,6 +71,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
+                .onTapGesture {
+                    print("P3")
+                    gameFromViewModel.periond_highlight.insert(2)
+                }
 
             // 第4小节
             Text(count_period >= 4 ? (index == 0 ? String(self.gameFromViewModel.periodDataOfMyTeamFromViewModels[3].score) : String(self.gameFromViewModel.periodDataOfOpponentTeamFromViewModels[3].score)) : "-")
@@ -70,6 +82,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .frame(width: columnWidths[1], alignment: .center)
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
+                }
+                .onTapGesture {
+                    print("P4")
+                    gameFromViewModel.periond_highlight.insert(3)
                 }
 
             // 第5小节：加时1
@@ -79,6 +95,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
+                .onTapGesture {
+                    print("O1")
+                    gameFromViewModel.periond_highlight.insert(4)
+                }
 
             // 第6小节：加时2
             Text(count_period >= 6 ? (index == 0 ? String(self.gameFromViewModel.periodDataOfMyTeamFromViewModels[5].score) : String(self.gameFromViewModel.periodDataOfOpponentTeamFromViewModels[5].score)) : "-")
@@ -86,6 +106,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .frame(width: columnWidths[1], alignment: .center)
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
+                }
+                .onTapGesture {
+                    print("O2")
+                    gameFromViewModel.periond_highlight.insert(5)
                 }
 
             // 第7小节：加时3
@@ -95,7 +119,11 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
-            
+                .onTapGesture {
+                    print("O3")
+                    gameFromViewModel.periond_highlight.insert(6)
+                }
+
             // 两队统计得分
             Text(index == 0 ? String(self.gameFromViewModel.score_MyTeam) : String(self.gameFromViewModel.score_OpponentTeam))
                 .multilineTextAlignment(.center)

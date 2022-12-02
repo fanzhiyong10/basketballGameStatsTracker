@@ -77,7 +77,7 @@ class GameFromViewModel: ObservableObject {
     @Published var periodDataOfOpponentTeamFromViewModels: [PeriodDataOfOpponentTeamFromViewModel] = [PeriodDataOfOpponentTeamFromViewModel]()
     
     // 选中高亮的小节
-    @Published var periond_highlight: [Int] = [0]
+    @Published var periond_highlight: Set<Int> = [0]
     
     // PlusMinus，缺省为+1，true
     @Published var isOnPlusMinus = true

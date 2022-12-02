@@ -13,6 +13,8 @@ struct TeamPeriodScoreTableOfGameTracker: View {
     @ObservedObject var gameFromViewModel: GameFromViewModel
 
     var body: some View {
+        let columnWidths = TeamPeriodScore.shared.calColumnWidths()
+        
         VStack {
             List {
                 Section {
@@ -41,6 +43,42 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             .listStyle(PlainListStyle())
             .environment(\.defaultMinListRowHeight, 30) // 控制行高
             .environment(\.defaultMinListHeaderHeight, 30) // 控制表头高度
+        }
+        .overlay(alignment: .leading) {
+            // 显示选中的小节，高亮框
+            HStack(alignment: .top, spacing: 0) {
+                Text("")
+                    .frame(width: columnWidths[0], height: 102)
+                
+                Text("")
+                    .frame(width: columnWidths[1], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(0) ? .red : .clear, width: 2)
+
+                Text("")
+                    .frame(width: columnWidths[2], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(1) ? .red : .clear, width: 2)
+
+                Text("")
+                    .frame(width: columnWidths[3], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(2) ? .red : .clear, width: 2)
+                
+                Text("")
+                    .frame(width: columnWidths[4], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(3) ? .red : .clear, width: 2)
+
+                Text("")
+                    .frame(width: columnWidths[5], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(4) ? .red : .clear, width: 2)
+
+                Text("")
+                    .frame(width: columnWidths[6], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(5) ? .red : .clear, width: 2)
+
+                Text("")
+                    .frame(width: columnWidths[7], height: 102)
+                    .border(gameFromViewModel.periond_highlight.contains(6) ? .red : .clear, width: 2)
+            }
+            .padding(.top, 4)
         }
     }
     
