@@ -231,7 +231,8 @@ class GameFromViewModel: ObservableObject {
             periodDataOfMyTeam.id = aint + 1
             UserDefaults.standard.set(periodDataOfMyTeam.id, forKey: "id_PeriodDataOfMyTeam")
         }
-        
+        self.ids_PeriodDataOfMyTeam += "\(periodDataOfMyTeam.id)"
+
         // 3.2）对方
         let periodDataOfOpponentTeam = PeriodDataOfOpponentTeam(context: context)
         do {
@@ -239,6 +240,7 @@ class GameFromViewModel: ObservableObject {
             periodDataOfOpponentTeam.id = aint + 1
             UserDefaults.standard.set(periodDataOfOpponentTeam.id, forKey: "id_PeriodDataOfOpponentTeam")
         }
+        self.ids_PeriodDataOfOpponentTeam += "\(periodDataOfOpponentTeam.id)"
 
         // 4）我方：periodDataOfMyTeam
         periodDataOfMyTeam.id_game = self.id
