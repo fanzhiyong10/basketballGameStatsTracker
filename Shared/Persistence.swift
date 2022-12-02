@@ -10,13 +10,16 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
 
+    // 预览使用数据
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+        
+        // 队员
+        let player = Player(context: viewContext)
+        player.fullName = "Full Test Player"
+        player.fullName = "Test Player"
+
         do {
             try viewContext.save()
         } catch {
@@ -30,6 +33,12 @@ struct PersistenceController {
 
     let container: NSPersistentContainer
 
+    // 测试数据
+    static var testData: [Player]? = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+        return try? PersistenceController.preview.container.viewContext.fetch(fetchRequest) as? [Player]
+    }()
+    
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "basketballGameStatsTracker")
         if inMemory {

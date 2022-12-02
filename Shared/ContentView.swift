@@ -9,25 +9,74 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    //MARK: - 全局环境变量 项目创建时，自动生成
     @Environment(\.managedObjectContext) private var viewContext
 
+    //MARK: - 读数据 项目创建时，自动生成
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
 
+    //MARK: - 左侧菜单
+    private var items_menu: [String] = ["New Game", "Share", "Voice Training", "Team Info", "Players"]
+    
+    //MARK: - 全局环境变量 状态控制，声明
+    @EnvironmentObject var mainStates: MainStateControl
+    
+    //MARK: -  我队的比赛数据 1.必须确保生成
+    @EnvironmentObject var myTeamInfo: MyTeamInfo
+
+    //MARK: -  队员的实时比赛数据，声明时要初始化
+    @State private var liveDatas : [LiveData] = LiveData.createData() // 所有队员
+
+    init() {
+        // 加载点
+        PreinstallData()
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(items_menu.indices, id: \.self) { index in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        switch index {
+                        case 0 :
+                            // New Game
+                            // 新比赛
+                            GameTracker()
+//                            SelectTeam()
+//                            MainTracker(liveDatas: $liveDatas)
+
+                        case 1 :
+                            // Share
+                            Text(items_menu[index])
+                            
+                        case 2 :
+                            // Voice Training
+                            Text(items_menu[index])
+                            
+                        case 3 :
+                            // Teams
+                            TeamsListView()
+                            
+                        case 4 :
+                            // Players
+                            PlayersListView()
+                            
+                        default :
+                            // 主页面
+                            Text(items_menu[index])
+                        }
+                        
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(items_menu[index])
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
+            .listStyle(SidebarListStyle())
+            .navigationTitle(Text("Game Tracker"))
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -40,7 +89,8 @@ struct ContentView: View {
                     }
                 }
             }
-            Text("Select an item")
+            
+            Text("首页：欢迎界面")
         }
     }
 
@@ -85,6 +135,9 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
+            .environmentObject(MainStateControl())
+            .environmentObject(MyTeamInfo())
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
