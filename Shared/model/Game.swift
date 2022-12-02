@@ -111,6 +111,9 @@ class GameFromViewModel: ObservableObject {
     // 辅助：状态变化：显示马上更新，
     @Published var counter_tap = 0 // 球员实时数据跟踪表
     @Published var counter_tap_subsititue = 0 // 替换球员表
+    
+    // 辅助
+    @Published var tap_period: Bool = false
 
     var score_MyTeam: Int { // 计算我方得分
         var result = 0
@@ -159,13 +162,13 @@ class GameFromViewModel: ObservableObject {
         }
     }
     
-    // 我队
+    /// 我队
     func setupMyTeam(team: Team) {
         self.id_my_team = team.id
         self.name_my_team = team.name
     }
     
-    // 对方球队
+    /// 对方球队
     func setupOppenengTeam(team: Team) {
         self.id_opponent_team = team.id
         self.name_opponent_team = team.name
@@ -174,176 +177,154 @@ class GameFromViewModel: ObservableObject {
     // 表底：实时数据统计
     @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
     
-    // 统计计算：ft_make_count
-    @objc func toMake() {
-//        footer_total.ft_make_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.ft_make_count
-        }
-        footer_total.ft_make_count = result
+    /// 结束当前小节
+    ///
+    /// 存储当前小节的数据
+    /// - 小节的结束时间
+    ///
+    /// 存储到数据库
+    func endCurrentPeriod() {
+        
     }
     
-    // 统计计算：ft_miss_count
-    @objc func toMiss() {
-//        footer_total.ft_miss_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.ft_miss_count
-        }
-        footer_total.ft_miss_count = result
+    /// 开始进行下一个小节
+    ///
+    /// 包括以下内容
+    /// - 选中处理：仅选中下一个小节
+    /// - 创建下一个小节的数据
+    /// - 将下一个小节的数据传送给各个模块
+    func beginNextPeriod() {
+        // 1. 仅选中下一个小节
+        self.periond_highlight = [self.periodDataOfMyTeamFromViewModels.count]
+        
+        // 2. 创建下一个小节的数据
+        self.initiateDataOfNextPeriod()
     }
     
-    // 统计计算：fg2_make_count
-    @objc func toBucket() {
-//        footer_total.fg2_make_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.fg2_make_count
+    /// 创建下一个小节
+    ///
+    ///1. 小节：我方、对方
+    ///2. 我方队员：队员 + 首发球员
+    ///
+    /// 对应ID：自增设计
+    func initiateDataOfNextPeriod() {
+        // 0）下一个小节的命名：P1、P2、P3、P4、O1、O2、O3
+        var name_period = ""
+        let count = self.periodDataOfMyTeamFromViewModels.count + 1
+        if count <= 4 {
+            name_period = "P" + "\(count)"
+        } else {
+            name_period = "O" + "\(count - 4)"
         }
-        footer_total.fg2_make_count = result
-    }
-    
-    // 统计计算：fg2_miss_count
-    @objc func toBrick() {
-//        footer_total.fg2_miss_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.fg2_miss_count
+        
+        // 1）下一个小节的生成时间
+        let date_created = Int(Date().timeIntervalSince1970) // 精确到秒
+
+        // 2）调用PersistenceController
+        let context = PersistenceController.shared.container.viewContext
+        
+        // 3）小节
+        // 3.1）我方
+        let periodDataOfMyTeam = PeriodDataOfMyTeam(context: context)
+        do {
+            let aint = UserDefaults.standard.integer(forKey: "id_PeriodDataOfMyTeam")
+            periodDataOfMyTeam.id = aint + 1
+            UserDefaults.standard.set(periodDataOfMyTeam.id, forKey: "id_PeriodDataOfMyTeam")
         }
-        footer_total.fg2_miss_count = result
-    }
-    
-    // 统计计算：fg3_make_count
-    @objc func toSwish() {
-//        footer_total.fg3_make_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.fg3_make_count
+        
+        // 3.2）对方
+        let periodDataOfOpponentTeam = PeriodDataOfOpponentTeam(context: context)
+        do {
+            let aint = UserDefaults.standard.integer(forKey: "id_PeriodDataOfOpponentTeam")
+            periodDataOfOpponentTeam.id = aint + 1
+            UserDefaults.standard.set(periodDataOfOpponentTeam.id, forKey: "id_PeriodDataOfOpponentTeam")
         }
-        footer_total.fg3_make_count = result
-    }
-    
-    // 统计计算：fg3_miss_count
-    @objc func toOff() {
-//        footer_total.fg3_miss_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.fg3_miss_count
+
+        // 4）我方：periodDataOfMyTeam
+        periodDataOfMyTeam.id_game = self.id
+        periodDataOfMyTeam.id_my_team = self.id_my_team
+        
+        periodDataOfMyTeam.name_period = name_period
+        
+        
+        periodDataOfMyTeam.score = 0
+        periodDataOfMyTeam.date_created = date_created // 精确到秒
+        
+        // 4.1）我方： ids_PlayerLiveData、playerLiveDataFromViewModels
+        var strs = ""
+        
+        // 4.2）如果在循环里面，会发生错误：UserDefaults
+        var aint = UserDefaults.standard.integer(forKey: "id_PlayerLiveData") // 当前保存的
+        
+        var playerLiveDataFromViewModels = [PlayerLiveDataFromViewModel]()
+        //使用上一个小节：球员
+        for pldfvm in self.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels {
+            aint += 1
+            let pld = PlayerLiveData(context: context)
+            
+            pld.id = aint
+            
+            strs += "\(pld.id),"
+            
+            pld.id_game = self.id
+            pld.id_my_team = self.id_my_team
+            pld.id_period = periodDataOfMyTeam.id
+            
+            pld.id_player = pldfvm.id
+            pld.name_player = pldfvm.player
+            pld.number = pldfvm.number
+            pld.isOnCourt = pldfvm.isOnCourt
+            
+            pld.time_cumulative = 0
+            pld.ids_ItemLiveData = ""
+            
+            // 4.3）生成PlayerLiveDataFromViewModel
+            let playerLiveDataFromViewModel = PlayerLiveDataFromViewModel(playerLiveData: pld)
+            playerLiveDataFromViewModels.append(playerLiveDataFromViewModel)
         }
-        footer_total.fg3_miss_count = result
-    }
-    
-    // 统计计算：orebs_count
-    @objc func toBoard() {
-//        footer_total.orebs_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.orebs_count
+        
+        // 4.4）ids_PlayerLiveData
+        periodDataOfMyTeam.ids_PlayerLiveData = strs
+        
+        // 4.5）保存：id_PlayerLiveData
+        UserDefaults.standard.set(aint, forKey: "id_PlayerLiveData") // 保存最大的
+
+        // 测试：输出数据
+        print(periodDataOfMyTeam.output())
+        
+        // 4.6）添加到数组
+        let periodDataOfMyTeamFromViewModel = PeriodDataOfMyTeamFromViewModel(periodDataOfMyTeam: periodDataOfMyTeam)
+        periodDataOfMyTeamFromViewModel.playerLiveDataFromViewModels = playerLiveDataFromViewModels
+        self.periodDataOfMyTeamFromViewModels.append(periodDataOfMyTeamFromViewModel)
+        
+        // 5) periodDataOfOpponentTeam
+        periodDataOfOpponentTeam.id_game = self.id
+        periodDataOfOpponentTeam.id_opponent_team = self.id_opponent_team
+        periodDataOfOpponentTeam.name_period = name_period
+        periodDataOfOpponentTeam.score = 0
+        periodDataOfOpponentTeam.date_created = date_created // 小节两队同一个时间
+
+        // 测试：输出数据
+        print(periodDataOfOpponentTeam.output())
+        
+        // 5.1）添加到数组
+        let periodDataOfOpponentTeamFromViewModel = PeriodDataOfOpponentTeamFromViewModel(periodDataOfOpponentTeam: periodDataOfOpponentTeam)
+        self.periodDataOfOpponentTeamFromViewModels.append(periodDataOfOpponentTeamFromViewModel)
+        
+        //6) 表底的统计数据：新的，各种统计数据
+        self.footer_total = PlayerLiveDataFromViewModel(total: "Total")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save the record...")
+            print(error.localizedDescription)
         }
-        footer_total.orebs_count = result
-    }
-    
-    // 统计计算：drebs_count
-    @objc func toGlass() {
-//        footer_total.drebs_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.drebs_count
-        }
-        footer_total.drebs_count = result
-    }
-    
-    // 统计计算：assts_count
-    @objc func toDime() {
-//        footer_total.assts_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.assts_count
-        }
-        footer_total.assts_count = result
-    }
-    
-    // 统计计算：tos_count
-    @objc func toBad() {
-//        footer_total.tos_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.tos_count
-        }
-        footer_total.tos_count = result
-    }
-    
-    // 统计计算：steals_count
-    @objc func toSteal() {
-//        footer_total.steals_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.steals_count
-        }
-        footer_total.steals_count = result
-    }
-    
-    // 统计计算：blocks_count
-    @objc func toBlock() {
-//        footer_total.blocks_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.blocks_count
-        }
-        footer_total.blocks_count = result
-    }
-    
-    // 统计计算：defs_count
-    @objc func toTip() {
-//        footer_total.defs_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.defs_count
-        }
-        footer_total.defs_count = result
-    }
-    
-    // 统计计算：charges_count
-    @objc func toCharge() {
-//        footer_total.charges_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.charges_count
-        }
-        footer_total.charges_count = result
-    }
-    
-    // 统计计算：ties_count
-    @objc func toTie() {
-//        footer_total.ties_count += 1
-        var result = 0
-        for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
-            result += playerLiveDataFromViewModel.ties_count
-        }
-        footer_total.ties_count = result
     }
     
 }
 
-extension Notification.Name {
-    static let commandSuccess = Notification.Name("commandSuccess")
-    static let toMake = Notification.Name("toMake") // ft_make_count
-    static let toMiss = Notification.Name("toMiss") // ft_miss_count
-    static let toBucket = Notification.Name("toBucket") // fg2_make_count
-    static let toBrick = Notification.Name("toBrick") // fg2_miss_count
-    static let toSwish = Notification.Name("toSwish") // fg3_make_count
-    static let toOff = Notification.Name("toOff") // fg3_miss_count
-    static let toDime = Notification.Name("toDime") // assts_count
-    static let toBoard = Notification.Name("toBoard") // orebs_count
-    static let toGlass = Notification.Name("toGlass") // drebs_count
-    static let toSteal = Notification.Name("toSteal") // steals_count
-    static let toBlock = Notification.Name("toBlock") // blocks_count
-    static let toTie = Notification.Name("toTie") // ties_count
-    static let toTip = Notification.Name("toTip") // defs_count
-    static let toCharge = Notification.Name("toCharge") // charges_count
-    static let toBad = Notification.Name("toBad") // tos_count
-}
+
 
 
 

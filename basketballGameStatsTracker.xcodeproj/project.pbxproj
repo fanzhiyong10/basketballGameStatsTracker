@@ -72,6 +72,7 @@
 		669C531529399A2F00D6FC41 /* PeriodDataOfMyTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669C531429399A2F00D6FC41 /* PeriodDataOfMyTeam.swift */; };
 		669C531829399E5100D6FC41 /* OnCourtPlayerLiveDataTableOfGameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669C531729399E5100D6FC41 /* OnCourtPlayerLiveDataTableOfGameTracker.swift */; };
 		669C531B2939A28F00D6FC41 /* SubstitutePlayersTableOfGameTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669C531A2939A28F00D6FC41 /* SubstitutePlayersTableOfGameTracker.swift */; };
+		669C531D2939FEB700D6FC41 /* GameExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669C531C2939FEB700D6FC41 /* GameExt.swift */; };
 		66B2109929286B2800E9ED60 /* EditTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2109829286B2800E9ED60 /* EditTeamView.swift */; };
 		66B2109B29286B4A00E9ED60 /* NewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2109A29286B4A00E9ED60 /* NewTeamView.swift */; };
 		66B2109D29286B7500E9ED60 /* TeamsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B2109C29286B7500E9ED60 /* TeamsListView.swift */; };
@@ -187,6 +188,7 @@
 		669C531429399A2F00D6FC41 /* PeriodDataOfMyTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodDataOfMyTeam.swift; sourceTree = "<group>"; };
 		669C531729399E5100D6FC41 /* OnCourtPlayerLiveDataTableOfGameTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnCourtPlayerLiveDataTableOfGameTracker.swift; sourceTree = "<group>"; };
 		669C531A2939A28F00D6FC41 /* SubstitutePlayersTableOfGameTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstitutePlayersTableOfGameTracker.swift; sourceTree = "<group>"; };
+		669C531C2939FEB700D6FC41 /* GameExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameExt.swift; sourceTree = "<group>"; };
 		66B2109829286B2800E9ED60 /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
 		66B2109A29286B4A00E9ED60 /* NewTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamView.swift; sourceTree = "<group>"; };
 		66B2109C29286B7500E9ED60 /* TeamsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsListView.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				66546D162933362800305304 /* PreinstallData.swift */,
 				66B2109E29286D6700E9ED60 /* Team.swift */,
 				66546D182933661500305304 /* Game.swift */,
+				669C531C2939FEB700D6FC41 /* GameExt.swift */,
 				669C531429399A2F00D6FC41 /* PeriodDataOfMyTeam.swift */,
 				66E8007C29345A81009FBD4A /* PlayerLiveData.swift */,
 				6640CF642927B2300093EF7A /* ShareStep.swift */,
@@ -743,6 +746,7 @@
 				6640CF7B2927B3450093EF7A /* PlayerLiveDataHeader.swift in Sources */,
 				6640CF792927B33F0093EF7A /* PlayerLiveDataFooter.swift in Sources */,
 				6640CF902927D1D30093EF7A /* NewGameSetupTeamPlayersView.swift in Sources */,
+				669C531D2939FEB700D6FC41 /* GameExt.swift in Sources */,
 				6640CF7F2927B3530093EF7A /* PlayerLiveDataTable.swift in Sources */,
 				6640CF632927B2280093EF7A /* Player.swift in Sources */,
 				66B2109929286B2800E9ED60 /* EditTeamView.swift in Sources */,

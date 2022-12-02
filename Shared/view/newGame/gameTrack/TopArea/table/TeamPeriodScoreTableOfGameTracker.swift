@@ -80,6 +80,24 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             }
             .padding(.top, 4)
         }
+        .alert("小节", isPresented: $gameFromViewModel.tap_period, actions: {
+            // 第一个按钮
+            Button("结束当前小节，开始下一个小节", role: .destructive, action: {
+                // 仅选中下一个小节
+                gameFromViewModel.beginNextPeriod()
+//                gameFromViewModel.periond_highlight = [gameFromViewModel.periodDataOfMyTeamFromViewModels.count]
+            })
+            
+            // 第二个按钮
+            Button("结束比赛", action: {
+                
+            })
+            
+            // 第三个按钮
+            Button("Cancel", role: .cancel, action: {})
+        }, message: {
+            Text("刚才点击了小节")
+        })
     }
     
     

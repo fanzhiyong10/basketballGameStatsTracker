@@ -50,6 +50,10 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 .onTapGesture {
                     print("P1")
                     gameFromViewModel.periond_highlight.insert(0)
+                    // 逻辑
+                    // 1. 如果当前小节正在比赛，则该小节P1始终亮，点击提示：1.1）下一个小节；1.2）终止比赛；1.3）取消
+                    // 2. 如果有多个小节，说明小节1已结束，若在高亮，则去掉高亮；若不是，则选中高亮；并进行相应的统计计算。
+                    gameFromViewModel.tap_period.toggle()
                 }
 
             // 第2小节

@@ -139,13 +139,13 @@ struct SelectStartingPlayers: View {
         do {
             let aint = UserDefaults.standard.integer(forKey: "id_PeriodDataOfMyTeam")
             periodDataOfMyTeam.id = aint + 1
-            UserDefaults.standard.set(game.id, forKey: "id_PeriodDataOfMyTeam")
+            UserDefaults.standard.set(periodDataOfMyTeam.id, forKey: "id_PeriodDataOfMyTeam")
         }
         
         do {
             let aint = UserDefaults.standard.integer(forKey: "id_PeriodDataOfOpponentTeam")
             periodDataOfOpponentTeam.id = aint + 1
-            UserDefaults.standard.set(game.id, forKey: "id_PeriodDataOfOpponentTeam")
+            UserDefaults.standard.set(periodDataOfOpponentTeam.id, forKey: "id_PeriodDataOfOpponentTeam")
         }
         
         // 1. game
