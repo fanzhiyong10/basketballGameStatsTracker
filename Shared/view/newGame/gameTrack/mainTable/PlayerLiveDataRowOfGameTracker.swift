@@ -109,15 +109,34 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
                                 // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.ft_make_count
                                 let result = playerLiveDataFromViewModel.ft_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.ft_make_count = result >= 0 ? result : 0
                                 
                                 // 状态变化：马上显示
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toMake
-                                NotificationCenter.default.post(name: .toMake, object: self)
+//                                NotificationCenter.default.post(name: .toMake, object: self)
+                                
+                                // 同步更新：表尾统计数据
+                                // 要点：索引
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_make_count += playerLiveDataFromViewModel.ft_make_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -137,14 +156,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
+                                // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.ft_miss_count
                                 let result = playerLiveDataFromViewModel.ft_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.ft_miss_count = result >= 0 ? result : 0
                                 
                                 // 状态变化
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toMiss
-                                NotificationCenter.default.post(name: .toMiss, object: self)
+//                                NotificationCenter.default.post(name: .toMiss, object: self)
+                                
+                                // 更新表尾统计数据
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_miss_count += playerLiveDataFromViewModel.ft_miss_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -173,14 +211,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
+                                // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.fg2_make_count
                                 let result = playerLiveDataFromViewModel.fg2_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg2_make_count = result >= 0 ? result : 0
                                 
                                 // 状态变化
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toBucket
-                                NotificationCenter.default.post(name: .toBucket, object: self)
+//                                NotificationCenter.default.post(name: .toBucket, object: self)
+                                
+                                // 更新表尾统计数据
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_make_count += playerLiveDataFromViewModel.fg2_make_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -199,14 +256,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
+                                // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.fg2_miss_count
                                 let result = playerLiveDataFromViewModel.fg2_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg2_miss_count = result >= 0 ? result : 0
                                 
                                 // 状态变化
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toBrick
-                                NotificationCenter.default.post(name: .toBrick, object: self)
+//                                NotificationCenter.default.post(name: .toBrick, object: self)
+                                
+                                // 更新表尾统计数据
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_miss_count += playerLiveDataFromViewModel.fg2_miss_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -235,14 +311,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.green)
                             .onTapGesture {
                                 print("+")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
+                                // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.fg3_make_count
                                 let result = playerLiveDataFromViewModel.fg3_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg3_make_count = result >= 0 ? result : 0
                                 
                                 // 状态变化
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toSwish
-                                NotificationCenter.default.post(name: .toSwish, object: self)
+//                                NotificationCenter.default.post(name: .toSwish, object: self)
+                                
+                                // 更新表尾统计数据
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_make_count += playerLiveDataFromViewModel.fg3_make_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -261,14 +356,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                             .foregroundColor(.red)
                             .onTapGesture {
                                 print("-")
+                                // 入口保护条件
+                                if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                                    // 比赛尚未开始
+                                    // 请点击按钮 START，开始比赛
+                                    gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                                    return
+                                }
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    // 选中多个小节，不能修改数据
+                                    gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                                    return
+                                }
+                                
+                                // 算法：最小为0
+                                let old = playerLiveDataFromViewModel.fg3_miss_count
                                 let result = playerLiveDataFromViewModel.fg3_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg3_miss_count = result >= 0 ? result : 0
                                 
                                 // 状态变化
-                                self.gameFromViewModel.counter_tap += 1
+//                                self.gameFromViewModel.counter_tap += 1
                                 
                                 // 发出通知 toOff
-                                NotificationCenter.default.post(name: .toOff, object: self)
+//                                NotificationCenter.default.post(name: .toOff, object: self)
+                                
+                                // 更新表尾统计数据
+                                gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_miss_count += playerLiveDataFromViewModel.fg3_miss_count - old
                                 
                                 // 提示声音
                                 self.playSound()
@@ -293,15 +407,27 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
                         // 点击：数据进行＋或者－，最小值为0
+                        let old = playerLiveDataFromViewModel.assts_count
                         let result = playerLiveDataFromViewModel.assts_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.assts_count = result >= 0 ? result : 0
                         
-                        // 状态变化：显示更新
-                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toDime，进行统计，处理统计 表尾 数据
-                        NotificationCenter.default.post(name: .toDime, object: self)
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.assts_count += playerLiveDataFromViewModel.assts_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -314,14 +440,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.orebs_count
                         let result = playerLiveDataFromViewModel.orebs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.orebs_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toBoard
-                        NotificationCenter.default.post(name: .toBoard, object: self)
+//                        NotificationCenter.default.post(name: .toBoard, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.orebs_count += playerLiveDataFromViewModel.orebs_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -334,14 +479,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.drebs_count
                         let result = playerLiveDataFromViewModel.drebs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.drebs_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toGlass
-                        NotificationCenter.default.post(name: .toGlass, object: self)
+//                        NotificationCenter.default.post(name: .toGlass, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.drebs_count += playerLiveDataFromViewModel.drebs_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -354,14 +518,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.steals_count
                         let result = playerLiveDataFromViewModel.steals_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.steals_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toSteal
-                        NotificationCenter.default.post(name: .toSteal, object: self)
+//                        NotificationCenter.default.post(name: .toSteal, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.steals_count += playerLiveDataFromViewModel.steals_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -374,14 +557,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.blocks_count
                         let result = playerLiveDataFromViewModel.blocks_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.blocks_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toBlock
-                        NotificationCenter.default.post(name: .toBlock, object: self)
+//                        NotificationCenter.default.post(name: .toBlock, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.blocks_count += playerLiveDataFromViewModel.blocks_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -394,14 +596,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.ties_count
                         let result = playerLiveDataFromViewModel.ties_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.ties_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toTie
-                        NotificationCenter.default.post(name: .toTie, object: self)
+//                        NotificationCenter.default.post(name: .toTie, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ties_count += playerLiveDataFromViewModel.ties_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -414,14 +635,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.defs_count
                         let result = playerLiveDataFromViewModel.defs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.defs_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toTip
-                        NotificationCenter.default.post(name: .toTip, object: self)
+//                        NotificationCenter.default.post(name: .toTip, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.defs_count += playerLiveDataFromViewModel.defs_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -434,14 +674,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.charges_count
                         let result = playerLiveDataFromViewModel.charges_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.charges_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toCharge
-                        NotificationCenter.default.post(name: .toCharge, object: self)
+//                        NotificationCenter.default.post(name: .toCharge, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.charges_count += playerLiveDataFromViewModel.charges_count - old
                         
                         // 提示声音
                         self.playSound()
@@ -451,14 +710,33 @@ struct PlayerLiveDataRowOfGameTracker: View {
                     .frame(width: columnWidths[17], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .onTapGesture {
+                        // 入口保护条件
+                        if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                            // 比赛尚未开始
+                            // 请点击按钮 START，开始比赛
+                            gameFromViewModel.tap_player_Alert_GameNotStart.toggle()
+                            return
+                        }
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            // 选中多个小节，不能修改数据
+                            gameFromViewModel.tap_player_Alert_CannotModifyData.toggle()
+                            return
+                        }
+                        
+                        // 算法：最小为0
+                        let old = playerLiveDataFromViewModel.tos_count
                         let result = playerLiveDataFromViewModel.tos_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.tos_count = result >= 0 ? result : 0
                         
                         // 状态变化
-                        self.gameFromViewModel.counter_tap += 1
+//                        self.gameFromViewModel.counter_tap += 1
                         
                         // 发出通知 toBad
-                        NotificationCenter.default.post(name: .toBad, object: self)
+//                        NotificationCenter.default.post(name: .toBad, object: self)
+                        
+                        // 更新表尾统计数据
+                        gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.tos_count += playerLiveDataFromViewModel.tos_count - old
                         
                         // 提示声音
                         self.playSound()

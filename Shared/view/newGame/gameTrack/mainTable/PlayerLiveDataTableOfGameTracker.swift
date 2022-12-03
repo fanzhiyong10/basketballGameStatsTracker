@@ -65,11 +65,23 @@ struct PlayerLiveDataTableOfGameTracker: View {
                 // 底部统计：状态变化：显示马上更新：GameFromViewModel 中的 counter_tap，与表尾同步
                 PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel, footer: gameFromViewModel.perionds_highlight.count == 1 ? gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total : gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.footer_total)
                     .padding(.leading, 8.0)
-//                PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel)
-//                    .padding(.leading, 8.0)
             }
             // 配合行定位2/2：位置，需要设定2处
             .listStyle(PlainListStyle())
+            .alert("First To Start Game", isPresented: $gameFromViewModel.tap_player_Alert_GameNotStart, actions: {
+                // 按钮：Cancel
+                Button("OK", role: .cancel, action: {})
+            }, message: {
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                Text("Game has not started yet, \nPlease click \"Start\" button to start game")
+            })
+            .alert("Cannot modify data", isPresented: $gameFromViewModel.tap_player_Alert_CannotModifyData, actions: {
+                // 按钮：Cancel
+                Button("OK", role: .cancel, action: {})
+            }, message: {
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                Text("You have selected more than one periods, \nSo you cannot modify period's data.")
+            })
         }
     }
 }

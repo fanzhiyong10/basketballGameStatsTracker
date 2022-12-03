@@ -33,28 +33,28 @@ struct PlayerLiveDataFooterOfGameTracker: View {
         
         HStack(alignment: .center, spacing: 0) {
             
-            Text(gameFromViewModel.footer_total.player)
+            Text(self.footer.player)
                 .frame(width: columnWidths[0], alignment: .center)
                 .font(Font.system(size: fontNameBig_size, weight: .bold))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
 
-            Text(gameFromViewModel.footer_total.number)
+            Text(self.footer.number)
                 .frame(width: columnWidths[1], alignment: .center)
                 .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
 
-            Text(gameFromViewModel.footer_total.minutes)
+            Text(self.footer.minutes)
                 .frame(width: columnWidths[2], alignment: .center)
                 .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
 
-            Text(gameFromViewModel.footer_total.per)
+            Text(self.footer.per)
                 .frame(width: columnWidths[3], alignment: .center)
                 .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
@@ -62,14 +62,14 @@ struct PlayerLiveDataFooterOfGameTracker: View {
                 }
 
             HStack(alignment: .center, spacing: 0) {
-                Text(gameFromViewModel.footer_total.points)
+                Text(self.footer.points)
                     .frame(width: columnWidths[4], alignment: .center)
                     .font(.system(size: fontMiddle_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.ft)
+                Text(self.footer.ft)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[5], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
@@ -77,7 +77,7 @@ struct PlayerLiveDataFooterOfGameTracker: View {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.fg2)
+                Text(self.footer.fg2)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[6], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
@@ -86,7 +86,7 @@ struct PlayerLiveDataFooterOfGameTracker: View {
                     }
 
      
-                Text(gameFromViewModel.footer_total.fg3)
+                Text(self.footer.fg3)
                     .multilineTextAlignment(.center)
                     .frame(width: columnWidths[7], alignment: .center)
                     .font(.system(size: fontMakeMiss_size))
@@ -95,7 +95,7 @@ struct PlayerLiveDataFooterOfGameTracker: View {
                     }
             }
 
-            Text(gameFromViewModel.footer_total.eFG)
+            Text(self.footer.eFG)
                 .frame(width: columnWidths[8], alignment: .center)
                 .font(.system(size: fontMiddle_size))
                 .overlay(alignment: .trailing) {
@@ -103,63 +103,63 @@ struct PlayerLiveDataFooterOfGameTracker: View {
                 }
 
             HStack(alignment: .center, spacing: 0) {
-                Text(gameFromViewModel.footer_total.assts)
+                Text(self.footer.assts)
                     .frame(width: columnWidths[9], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.orebs)
+                Text(self.footer.orebs)
                     .frame(width: columnWidths[10], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.drebs)
+                Text(self.footer.drebs)
                     .frame(width: columnWidths[11], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.steals)
+                Text(self.footer.steals)
                     .frame(width: columnWidths[12], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.blocks)
+                Text(self.footer.blocks)
                     .frame(width: columnWidths[13], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.ties)
+                Text(self.footer.ties)
                     .frame(width: columnWidths[14], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.defs)
+                Text(self.footer.defs)
                     .frame(width: columnWidths[15], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.charges)
+                Text(self.footer.charges)
                     .frame(width: columnWidths[16], alignment: .center)
                     .font(.system(size: fontBig_size))
                     .overlay(alignment: .trailing) {
                         Color.white.frame(width: 1, height: height, alignment: .trailing)
                     }
 
-                Text(gameFromViewModel.footer_total.tos)
+                Text(self.footer.tos)
                     .font(.system(size: fontBig_size))
                     .frame(width: columnWidths[17], alignment: .center)
             }

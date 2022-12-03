@@ -29,12 +29,14 @@ extension Notification.Name {
 extension GameFromViewModel {
     /// 统计计算：ft_make_count
     @objc func toMake() {
+        print("toMake")
 //        footer_total.ft_make_count += 1
         var result = 0
         for playerLiveDataFromViewModel in self.playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.ft_make_count
         }
-        self.footer_total.ft_make_count = result
+        
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.ft_make_count = result
     }
     
     /// 统计计算：ft_miss_count
@@ -44,7 +46,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.ft_miss_count
         }
-        footer_total.ft_miss_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.ft_miss_count = result
     }
     
     /// 统计计算：fg2_make_count
@@ -54,7 +56,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.fg2_make_count
         }
-        footer_total.fg2_make_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.fg2_make_count = result
     }
     
     /// 统计计算：fg2_miss_count
@@ -64,7 +66,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.fg2_miss_count
         }
-        footer_total.fg2_miss_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.fg2_miss_count = result
     }
     
     /// 统计计算：fg3_make_count
@@ -74,7 +76,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.fg3_make_count
         }
-        footer_total.fg3_make_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.fg3_make_count = result
     }
     
     /// 统计计算：fg3_miss_count
@@ -84,7 +86,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.fg3_miss_count
         }
-        footer_total.fg3_miss_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.fg3_miss_count = result
     }
     
     /// 统计计算：orebs_count
@@ -94,7 +96,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.orebs_count
         }
-        footer_total.orebs_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.orebs_count = result
     }
     
     /// 统计计算：drebs_count
@@ -104,7 +106,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.drebs_count
         }
-        footer_total.drebs_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.drebs_count = result
     }
     
     /// 统计计算：assts_count
@@ -114,7 +116,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.assts_count
         }
-        footer_total.assts_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.assts_count = result
     }
     
     /// 统计计算：tos_count
@@ -124,7 +126,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.tos_count
         }
-        footer_total.tos_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.tos_count = result
     }
     
     /// 统计计算：steals_count
@@ -134,7 +136,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.steals_count
         }
-        footer_total.steals_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.steals_count = result
     }
     
     /// 统计计算：blocks_count
@@ -144,7 +146,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.blocks_count
         }
-        footer_total.blocks_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.blocks_count = result
     }
     
     /// 统计计算：defs_count
@@ -154,7 +156,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.defs_count
         }
-        footer_total.defs_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.defs_count = result
     }
     
     /// 统计计算：charges_count
@@ -164,7 +166,7 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.charges_count
         }
-        footer_total.charges_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.charges_count = result
     }
     
     /// 统计计算：ties_count
@@ -174,6 +176,6 @@ extension GameFromViewModel {
         for playerLiveDataFromViewModel in playerLiveDataFromViewModels {
             result += playerLiveDataFromViewModel.ties_count
         }
-        footer_total.ties_count = result
+        self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.ties_count = result
     }
 }

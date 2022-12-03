@@ -76,7 +76,7 @@ class GameFromViewModel: ObservableObject {
     // 辅助：对方
     @Published var periodDataOfOpponentTeamFromViewModels: [PeriodDataOfOpponentTeamFromViewModel] = [PeriodDataOfOpponentTeamFromViewModel]()
     
-    // 选中高亮的小节
+    // 辅助：选中高亮的小节
     @Published var perionds_highlight: Set<Int> = [0] // 复数
     
     // PlusMinus，缺省为+1，true
@@ -110,6 +110,7 @@ class GameFromViewModel: ObservableObject {
     
     // 辅助：状态变化：显示马上更新，
     @Published var counter_tap = 0 // 球员实时数据跟踪表
+    
     @Published var counter_tap_subsititue = 0 // 替换球员表
     
     // 辅助
@@ -123,6 +124,12 @@ class GameFromViewModel: ObservableObject {
     
     // 辅助
     @Published var status_Game: Int = 0 // 0:进入，尚未开始；1:开始，正在进行；2:比赛结束。
+    
+    // 辅助：比赛尚未开始，点击球员表中 指标
+    @Published var tap_player_Alert_GameNotStart: Bool = false
+
+    // 辅助：比赛已经结束，若选中多个小节，则不能修改数据
+    @Published var tap_player_Alert_CannotModifyData: Bool = false
 
     var score_MyTeam: Int { // 计算我方得分
         var result = 0
@@ -184,8 +191,9 @@ class GameFromViewModel: ObservableObject {
     }
     
     // 表底：实时数据统计
-    @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
-    
+//    @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
+//    @Published var footer_totals: [PlayerLiveDataFromViewModel] = [PlayerLiveDataFromViewModel(total: "Total")]
+
     /// 结束当前小节
     ///
     /// 存储当前小节的数据
@@ -315,7 +323,7 @@ class GameFromViewModel: ObservableObject {
         // 4.6）添加到数组
         let periodDataOfMyTeamFromViewModel = PeriodDataOfMyTeamFromViewModel(periodDataOfMyTeam: periodDataOfMyTeam)
         // 4.7) 表底的统计数据：新的，各种统计数据
-        periodDataOfMyTeamFromViewModel.footer_total = PlayerLiveDataFromViewModel(total: "Total")
+//        periodDataOfMyTeamFromViewModel.footer_total = PlayerLiveDataFromViewModel(total: "Total")
         periodDataOfMyTeamFromViewModel.playerLiveDataFromViewModels = playerLiveDataFromViewModels
         self.periodDataOfMyTeamFromViewModels.append(periodDataOfMyTeamFromViewModel)
         
@@ -334,7 +342,7 @@ class GameFromViewModel: ObservableObject {
         self.periodDataOfOpponentTeamFromViewModels.append(periodDataOfOpponentTeamFromViewModel)
         
         //6) 表底的统计数据：新的，各种统计数据
-//        self.footer_total = PlayerLiveDataFromViewModel(total: "Total")
+//        self.footer_totals.append(PlayerLiveDataFromViewModel(total: "Total"))
         
         do {
             try context.save()
