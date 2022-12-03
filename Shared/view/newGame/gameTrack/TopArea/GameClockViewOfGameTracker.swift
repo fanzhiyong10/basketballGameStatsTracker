@@ -60,10 +60,20 @@ struct GameClockViewOfGameTracker: View {
                 HStack(alignment: .center) {
                     
                     // 对齐：左侧
-                    if gameFromViewModel.started == false {
+                    if gameFromViewModel.status_Game == 2 {// 比赛状态：比赛结束
+                        // 比赛结束：红色提示
+                        Text("Game\nOver")
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                    } else if gameFromViewModel.started == false {
                         Button(action: {
                             print("Start")
                             gameFromViewModel.started = true
+                            
+                            if gameFromViewModel.status_Game == 0 { // 比赛状态：尚未开始
+                                // 比赛状态，改为：正在进行
+                                gameFromViewModel.status_Game = 1
+                            }
                         }) {
                             Text("START")
                                 .frame(width: 50, height: 50, alignment: .center)

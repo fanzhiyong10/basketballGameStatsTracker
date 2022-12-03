@@ -46,61 +46,119 @@ struct TeamPeriodScoreTableOfGameTracker: View {
         }
         .overlay(alignment: .leading) {
             // 显示选中的小节，高亮框
+            // 控制显示，集合中是否包含：gameFromViewModel.periond_highlight.contains(1)
             HStack(alignment: .top, spacing: 0) {
                 Text("")
                     .frame(width: columnWidths[0], height: 102)
                 
                 Text("")
                     .frame(width: columnWidths[1], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(0) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(0) ? .red : .clear, width: 2)
 
                 Text("")
                     .frame(width: columnWidths[2], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(1) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(1) ? .red : .clear, width: 2)
 
                 Text("")
                     .frame(width: columnWidths[3], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(2) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(2) ? .red : .clear, width: 2)
                 
                 Text("")
                     .frame(width: columnWidths[4], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(3) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(3) ? .red : .clear, width: 2)
 
                 Text("")
                     .frame(width: columnWidths[5], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(4) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(4) ? .red : .clear, width: 2)
 
                 Text("")
                     .frame(width: columnWidths[6], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(5) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(5) ? .red : .clear, width: 2)
 
                 Text("")
                     .frame(width: columnWidths[7], height: 102)
-                    .border(gameFromViewModel.periond_highlight.contains(6) ? .red : .clear, width: 2)
+                    .border(gameFromViewModel.perionds_highlight.contains(6) ? .red : .clear, width: 2)
             }
-            .padding(.top, 4)
+            .padding(.top, 4) // 顶部对齐：与表的顶部对齐
         }
-        .alert("小节", isPresented: $gameFromViewModel.tap_period, actions: {
-            // 第一个按钮
-            Button("结束当前小节，开始下一个小节", role: .destructive, action: {
-                // 仅选中下一个小节
-                gameFromViewModel.beginNextPeriod()
-//                gameFromViewModel.periond_highlight = [gameFromViewModel.periodDataOfMyTeamFromViewModels.count]
-            })
-            
-            // 第二个按钮
-            Button("结束比赛", action: {
+        .alert("P1 tapped", isPresented: $gameFromViewModel.tap_period1, actions: {
+            // 区分P1是否正在比赛：比赛中，比赛结束
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                // 第二个按钮：结束比赛
+                Button("First To Start Game", action: {
+                    
+                })
+            }
+            else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
+                // 区分P1是否正在比赛：比赛中：2个按钮
+                if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 1 { // P1：比赛中
+                    // P1：比赛中
+                    // 第一个按钮：结束P1，开始P2
+                    Button("Stop P1，Start P2", role: .destructive, action: {
+                        // 开始下一个小节：P2
+                        gameFromViewModel.beginNextPeriod()
+                    })
+                    
+                    // 第二个按钮：结束比赛
+                    Button("Game Over", action: {
+                        gameFromViewModel.status_Game = 2 // 比赛结束
+                    })
+                } else { // P1已经比赛结束，但比赛尚未结束
+                    //P1已经比赛结束，但比赛尚未结束
+                    // 最想做的事情：切换小节，修改数据
+                    // 第一个按钮
+                    Button("Switch To P1", role: .destructive, action: {
+                        // 切换到小节：P1
+                        gameFromViewModel.switchToEndedPeriod(index: 0)
+                    })
+                }
                 
-            })
+            } else if gameFromViewModel.status_Game == 2 { // 比赛结束
+                // 区分P1是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
+                if gameFromViewModel.perionds_highlight.contains(0) {
+                    // 包含，改为：不选
+                    Button("Do Not Select P1", action: {
+                        
+                    })
+                } else {
+                    // 未包含，改为：选则
+                    Button("Do Select P1", action: {
+                        
+                    })
+                }
+            }
             
-            // 第三个按钮
-            Button("Cancel", role: .cancel, action: {})
+            // 按钮Cancel，处理：比赛未开始，则不显示
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+            } else {
+                // 按钮：Cancel
+                Button("Cancel", role: .cancel, action: {})
+            }
         }, message: {
-            Text("刚才点击了小节")
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                Text("Game has not started yet, \nPlease click \"Start\" button to start game")
+            } else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
+                // 区分P1是否正在比赛：比赛中：2个按钮
+                if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 1 { // P1：比赛中
+                    // P1：比赛中
+                    Text("P1 is playing")
+                } else { // P1已经比赛结束，但比赛尚未结束
+                    //P1已经比赛结束，但比赛尚未结束
+                    Text("P1 is over")
+                }
+            }
+            else if gameFromViewModel.status_Game == 2 { // 比赛结束
+                Text("Game is over")
+            }
+            
         })
+        
+    
     }
     
-    
+    /// 用于测试
     func createData() -> [[String]] {
         var myTeam = [String]()
         myTeam.append("My Team")

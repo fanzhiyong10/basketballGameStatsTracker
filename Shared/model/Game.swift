@@ -77,7 +77,7 @@ class GameFromViewModel: ObservableObject {
     @Published var periodDataOfOpponentTeamFromViewModels: [PeriodDataOfOpponentTeamFromViewModel] = [PeriodDataOfOpponentTeamFromViewModel]()
     
     // 选中高亮的小节
-    @Published var periond_highlight: Set<Int> = [0]
+    @Published var perionds_highlight: Set<Int> = [0] // 复数
     
     // PlusMinus，缺省为+1，true
     @Published var isOnPlusMinus = true
@@ -113,7 +113,16 @@ class GameFromViewModel: ObservableObject {
     @Published var counter_tap_subsititue = 0 // 替换球员表
     
     // 辅助
-    @Published var tap_period: Bool = false
+    @Published var tap_period1: Bool = false
+    @Published var tap_period2: Bool = false
+    @Published var tap_period3: Bool = false
+    @Published var tap_period4: Bool = false
+    @Published var tap_period5: Bool = false
+    @Published var tap_period6: Bool = false
+    @Published var tap_period7: Bool = false
+    
+    // 辅助
+    @Published var status_Game: Int = 0 // 0:进入，尚未开始；1:开始，正在进行；2:比赛结束。
 
     var score_MyTeam: Int { // 计算我方得分
         var result = 0
@@ -195,10 +204,18 @@ class GameFromViewModel: ObservableObject {
     /// - 将下一个小节的数据传送给各个模块
     func beginNextPeriod() {
         // 1. 仅选中下一个小节
-        self.periond_highlight = [self.periodDataOfMyTeamFromViewModels.count]
+        self.perionds_highlight = [self.periodDataOfMyTeamFromViewModels.count]
         
         // 2. 创建下一个小节的数据
         self.initiateDataOfNextPeriod()
+    }
+    
+    /// 切换到小节，小节已经结束
+    ///
+    /// 需要改变以下内容
+    /// - 球员实时数据跟踪数据表：使用切换的小节，已经结束不能计时，可以修改数据
+    func switchToEndedPeriod(index: Int) {
+        
     }
     
     /// 创建下一个小节

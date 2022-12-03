@@ -49,11 +49,11 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P1")
-                    gameFromViewModel.periond_highlight.insert(0)
+                    gameFromViewModel.perionds_highlight.insert(0)
                     // 逻辑
                     // 1. 如果当前小节正在比赛，则该小节P1始终亮，点击提示：1.1）下一个小节；1.2）终止比赛；1.3）取消
                     // 2. 如果有多个小节，说明小节1已结束，若在高亮，则去掉高亮；若不是，则选中高亮；并进行相应的统计计算。
-                    gameFromViewModel.tap_period.toggle()
+                    gameFromViewModel.tap_period1.toggle()
                 }
 
             // 第2小节
@@ -65,7 +65,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P2")
-                    gameFromViewModel.periond_highlight.insert(1)
+                    gameFromViewModel.perionds_highlight.insert(1)
                 }
 
             // 第3小节
@@ -77,7 +77,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P3")
-                    gameFromViewModel.periond_highlight.insert(2)
+                    gameFromViewModel.perionds_highlight.insert(2)
                 }
 
             // 第4小节
@@ -89,7 +89,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P4")
-                    gameFromViewModel.periond_highlight.insert(3)
+                    gameFromViewModel.perionds_highlight.insert(3)
                 }
 
             // 第5小节：加时1
@@ -101,7 +101,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O1")
-                    gameFromViewModel.periond_highlight.insert(4)
+                    gameFromViewModel.perionds_highlight.insert(4)
                 }
 
             // 第6小节：加时2
@@ -113,7 +113,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O2")
-                    gameFromViewModel.periond_highlight.insert(5)
+                    gameFromViewModel.perionds_highlight.insert(5)
                 }
 
             // 第7小节：加时3
@@ -125,7 +125,7 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O3")
-                    gameFromViewModel.periond_highlight.insert(6)
+                    gameFromViewModel.perionds_highlight.insert(6)
                 }
 
             // 两队统计得分
