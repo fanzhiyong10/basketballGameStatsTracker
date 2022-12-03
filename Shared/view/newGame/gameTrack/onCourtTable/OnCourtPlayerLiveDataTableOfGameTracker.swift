@@ -9,7 +9,7 @@ import SwiftUI
 
 import SwiftUI
 
-///场上队员的数据表
+///场上队员的数据表：放大显示的表
 ///
 ///表格形式
 ///- header
@@ -24,6 +24,7 @@ struct OnCourtPlayerLiveDataTableOfGameTracker: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 Section {
+                    // 正在比赛的小节last
                     ForEach(gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels.indices, id:\.self) { index in
                         // 仅场上队员
                         if gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].isOnCourt == true {
@@ -43,7 +44,7 @@ struct OnCourtPlayerLiveDataTableOfGameTracker: View {
                 } header: { // 表头
                     PlayerLiveDataHeader(height: 60) // 40
                         
-                } footer: { // 表尾
+                } footer: { // 表尾：正在比赛的小节last
                     PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel, footer: gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.footer_total, height: 120)
                 }
                 // 行定位1/2：位置，需要设定2处，左侧预留空间8

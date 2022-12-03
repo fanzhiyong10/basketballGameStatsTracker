@@ -60,7 +60,7 @@ public class ItemLiveData: NSManagedObject {
     @NSManaged public var date: Int // 时间发生的时间
 }
 
-///用于显示
+///某个球员的数据，用于显示
 ///
 ///说明
 ///- 显示可以是单个小节，可以是多个小节

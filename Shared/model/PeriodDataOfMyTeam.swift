@@ -53,6 +53,7 @@ public class PeriodDataOfMyTeam: NSManagedObject {
     
 }
 
+///主队某个小节的数据，用于显示
 class PeriodDataOfMyTeamFromViewModel: ObservableObject {
     @Published var id: Int = 0 // id_PeriodDataOfMyTeam
     

@@ -62,7 +62,7 @@ struct PlayerLiveDataTableOfGameTracker: View {
 
             }
             .overlay(alignment: .bottomLeading) {
-                // 底部统计：状态变化：显示马上更新：GameFromViewModel 中的 counter_tap，与表尾同步
+                // 底部统计：状态变化：显示马上更新，与表尾同步
                 PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel, footer: gameFromViewModel.perionds_highlight.count == 1 ? gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total : gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.footer_total)
                     .padding(.leading, 8.0)
             }
