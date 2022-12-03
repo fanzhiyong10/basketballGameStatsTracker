@@ -44,7 +44,7 @@ struct OnCourtPlayerLiveDataTableOfGameTracker: View {
                     PlayerLiveDataHeader(height: 60) // 40
                         
                 } footer: { // 表尾
-                    PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel, height: 120)
+                    PlayerLiveDataFooterOfGameTracker(gameFromViewModel: gameFromViewModel, footer: gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.footer_total, height: 120)
                 }
                 // 行定位1/2：位置，需要设定2处，左侧预留空间8
                 .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0)) // leading 8

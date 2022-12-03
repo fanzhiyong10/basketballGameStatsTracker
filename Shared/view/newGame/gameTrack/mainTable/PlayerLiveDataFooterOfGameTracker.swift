@@ -10,13 +10,15 @@ import SwiftUI
 struct PlayerLiveDataFooterOfGameTracker: View {
     //MARK: -  我队的比赛数据 1.必须确保生成
     @ObservedObject var gameFromViewModel: GameFromViewModel
+    @ObservedObject var footer: PlayerLiveDataFromViewModel
 
     var height: CGFloat = 60
     
     let delta = calDeltaPercent()
     
-    init(gameFromViewModel: GameFromViewModel, height: CGFloat = 60) {
+    init(gameFromViewModel: GameFromViewModel, footer: PlayerLiveDataFromViewModel, height: CGFloat = 60) {
         self.gameFromViewModel = gameFromViewModel
+        self.footer = footer
         self.height = height
     }
     
@@ -172,6 +174,6 @@ struct PlayerLiveDataFooterOfGameTracker: View {
 
 struct PlayerLiveDataFooterOfGameTracker_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerLiveDataFooterOfGameTracker(gameFromViewModel: GameFromViewModel())
+        PlayerLiveDataFooterOfGameTracker(gameFromViewModel: GameFromViewModel(), footer: PlayerLiveDataFromViewModel())
     }
 }

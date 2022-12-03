@@ -314,6 +314,8 @@ class GameFromViewModel: ObservableObject {
         
         // 4.6）添加到数组
         let periodDataOfMyTeamFromViewModel = PeriodDataOfMyTeamFromViewModel(periodDataOfMyTeam: periodDataOfMyTeam)
+        // 4.7) 表底的统计数据：新的，各种统计数据
+        periodDataOfMyTeamFromViewModel.footer_total = PlayerLiveDataFromViewModel(total: "Total")
         periodDataOfMyTeamFromViewModel.playerLiveDataFromViewModels = playerLiveDataFromViewModels
         self.periodDataOfMyTeamFromViewModels.append(periodDataOfMyTeamFromViewModel)
         
@@ -332,7 +334,7 @@ class GameFromViewModel: ObservableObject {
         self.periodDataOfOpponentTeamFromViewModels.append(periodDataOfOpponentTeamFromViewModel)
         
         //6) 表底的统计数据：新的，各种统计数据
-        self.footer_total = PlayerLiveDataFromViewModel(total: "Total")
+//        self.footer_total = PlayerLiveDataFromViewModel(total: "Total")
         
         do {
             try context.save()

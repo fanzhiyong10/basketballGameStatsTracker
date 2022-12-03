@@ -86,6 +86,9 @@ class PeriodDataOfMyTeamFromViewModel: ObservableObject {
     // 辅助：球员
     @Published var playerLiveDataFromViewModels: [PlayerLiveDataFromViewModel] = [PlayerLiveDataFromViewModel]()
     
+    // 辅助：表底：实时数据统计
+    @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
+
     init(periodDataOfMyTeam: PeriodDataOfMyTeam? = nil) {
         if let periodDataOfMyTeam = periodDataOfMyTeam {
             self.id = periodDataOfMyTeam.id
