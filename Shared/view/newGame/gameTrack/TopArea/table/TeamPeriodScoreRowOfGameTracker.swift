@@ -49,7 +49,16 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P1")
-                    gameFromViewModel.perionds_highlight.insert(0)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛已经开始
+                        // 小节已经开始，等待弹窗处理
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过，等待弹窗处理
+                    }
+                    */
+                    
                     // 逻辑
                     // 1. 如果当前小节正在比赛，则该小节P1始终亮，点击提示：1.1）下一个小节；1.2）终止比赛；1.3）取消
                     // 2. 如果有多个小节，说明小节1已结束，若在高亮，则去掉高亮；若不是，则选中高亮；并进行相应的统计计算。
@@ -65,7 +74,18 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P2")
-                    gameFromViewModel.perionds_highlight.insert(1)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛已经开始
+                        gameFromViewModel.perionds_highlight = [1]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过，等待弹窗处理
+                    }
+                    */
+                    
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period2.toggle()
                 }
 
             // 第3小节
@@ -77,7 +97,20 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P3")
-                    gameFromViewModel.perionds_highlight.insert(2)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛尚未开始
+                        gameFromViewModel.perionds_highlight = [2]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过
+                        if gameFromViewModel.ids_PeriodDataOfMyTeam.count >= 3 {
+                            gameFromViewModel.perionds_highlight.insert(2)
+                        }
+                    }
+                    */
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period3.toggle()
                 }
 
             // 第4小节
@@ -89,7 +122,20 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("P4")
-                    gameFromViewModel.perionds_highlight.insert(3)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛尚未开始
+                        gameFromViewModel.perionds_highlight = [3]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过
+                        if gameFromViewModel.ids_PeriodDataOfMyTeam.count >= 4 {
+                            gameFromViewModel.perionds_highlight.insert(3)
+                        }
+                    }
+                    */
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period4.toggle()
                 }
 
             // 第5小节：加时1
@@ -101,7 +147,20 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O1")
-                    gameFromViewModel.perionds_highlight.insert(4)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛尚未开始
+                        gameFromViewModel.perionds_highlight = [4]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过
+                        if gameFromViewModel.ids_PeriodDataOfMyTeam.count >= 5 {
+                            gameFromViewModel.perionds_highlight.insert(4)
+                        }
+                    }
+                    */
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period5.toggle()
                 }
 
             // 第6小节：加时2
@@ -113,7 +172,20 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O2")
-                    gameFromViewModel.perionds_highlight.insert(5)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛尚未开始
+                        gameFromViewModel.perionds_highlight = [5]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过
+                        if gameFromViewModel.ids_PeriodDataOfMyTeam.count >= 6 {
+                            gameFromViewModel.perionds_highlight.insert(5)
+                        }
+                    }
+                    */
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period6.toggle()
                 }
 
             // 第7小节：加时3
@@ -125,7 +197,20 @@ struct TeamPeriodScoreRowOfGameTracker: View {
                 }
                 .onTapGesture {
                     print("O3")
-                    gameFromViewModel.perionds_highlight.insert(6)
+                    /*
+                    if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                        
+                    } else if gameFromViewModel.status_Game == 1 { // 比赛尚未开始
+                        gameFromViewModel.perionds_highlight = [6]
+                    } else if gameFromViewModel.status_Game == 2 { // 比赛已经结束
+                        // 小节比赛过
+                        if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 7 {
+                            gameFromViewModel.perionds_highlight.insert(6)
+                        }
+                    }
+                    */
+                    // 点击小节，需要给出响应
+                    gameFromViewModel.tap_period7.toggle()
                 }
 
             // 两队统计得分

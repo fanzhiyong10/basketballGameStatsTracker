@@ -36,7 +36,7 @@ struct PlayerLiveDataTableOfGameTracker: View {
                 Section {
                     ForEach(gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels.indices, id:\.self) { index in //.self
                         // 队员的实时比赛数据：数据变化与数据显示同步，响应要很快
-                        PlayerLiveDataRowOfGameTracker(gameFromViewModel: gameFromViewModel, playerLiveDataFromViewModel: gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index])
+                        PlayerLiveDataRowOfGameTracker(gameFromViewModel: gameFromViewModel, playerLiveDataFromViewModel: gameFromViewModel.perionds_highlight.count == 1 ? gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first! ].playerLiveDataFromViewModels[index] : gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index])
                             .frame(height: 60) // 行高
                             .listRowSeparator(.hidden) // 行分割线：隐藏
                             .background { // 行背景色

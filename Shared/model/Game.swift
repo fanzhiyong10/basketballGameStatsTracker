@@ -215,7 +215,8 @@ class GameFromViewModel: ObservableObject {
     /// 需要改变以下内容
     /// - 球员实时数据跟踪数据表：使用切换的小节，已经结束不能计时，可以修改数据
     func switchToEndedPeriod(index: Int) {
-        
+        // 仅包含要切换到的小节
+        self.perionds_highlight = [index]
     }
     
     /// 创建下一个小节

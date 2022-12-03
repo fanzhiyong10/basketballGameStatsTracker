@@ -108,7 +108,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                     //P1已经比赛结束，但比赛尚未结束
                     // 最想做的事情：切换小节，修改数据
                     // 第一个按钮
-                    Button("Switch To P1", role: .destructive, action: {
+                    Button("View P1", role: .destructive, action: {
                         // 切换到小节：P1
                         gameFromViewModel.switchToEndedPeriod(index: 0)
                     })
@@ -147,6 +147,83 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 } else { // P1已经比赛结束，但比赛尚未结束
                     //P1已经比赛结束，但比赛尚未结束
                     Text("P1 is over")
+                }
+            }
+            else if gameFromViewModel.status_Game == 2 { // 比赛结束
+                Text("Game is over")
+            }
+            
+        })
+        .alert("P2 tapped", isPresented: $gameFromViewModel.tap_period2, actions: {
+            // 区分P2是否正在比赛：比赛中，比赛结束
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                // 第二个按钮：结束比赛
+                Button("First To Start Game", action: {
+                    
+                })
+            }
+            else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
+                // 区分P2是否正在比赛：比赛中：2个按钮
+                if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 1 { // P2 尚未开始
+                    
+                } else if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 2 { // P2：比赛中，比赛中的小节为数组中最后的小节
+                    // P2：比赛中
+                    // 第一个按钮：结束P2，开始P3
+                    Button("Stop P2，Start P3", role: .destructive, action: {
+                        // 开始下一个小节：P2
+                        gameFromViewModel.beginNextPeriod()
+                    })
+                    
+                    // 第二个按钮：结束比赛
+                    Button("Game Over", action: {
+                        gameFromViewModel.status_Game = 2 // 比赛结束
+                    })
+                } else { // P2已经比赛结束，但比赛尚未结束
+                    //P2已经比赛结束，但比赛尚未结束
+                    // 最想做的事情：切换小节，修改数据
+                    // 第一个按钮
+                    Button("View P2", role: .destructive, action: {
+                        // 切换到小节：P2
+                        gameFromViewModel.switchToEndedPeriod(index: 1)
+                    })
+                }
+                
+            } else if gameFromViewModel.status_Game == 2 { // 比赛结束
+                // 区分P2是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
+                if gameFromViewModel.perionds_highlight.contains(1) {
+                    // 包含，改为：不选
+                    Button("Do Not Select P2", action: {
+                        gameFromViewModel.perionds_highlight.remove(1)
+                    })
+                } else {
+                    // 未包含，改为：选则
+                    Button("Do Select P2", action: {
+                        gameFromViewModel.perionds_highlight.insert(1)
+                    })
+                }
+            }
+            
+            // 按钮Cancel，处理：比赛未开始，则不显示
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+            } else {
+                // 按钮：Cancel
+                Button("Cancel", role: .cancel, action: {})
+            }
+        }, message: {
+            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
+                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
+                Text("Game has not started yet, \nPlease click \"Start\" button to start game")
+            } else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
+                // 区分P2是否正在比赛：比赛中：2个按钮
+                if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 1 { // P2 尚未开始
+                    Text("P2 has not started yet, \nOnly after P1 ends, P2 can start")
+                } else if gameFromViewModel.ids_PeriodDataOfMyTeam.count == 2 { // P2：比赛中
+                    // P2：比赛中
+                    Text("P2 is playing")
+                } else { // P2已经比赛结束，但比赛尚未结束
+                    //P2已经比赛结束，但比赛尚未结束
+                    Text("P2 is over")
                 }
             }
             else if gameFromViewModel.status_Game == 2 { // 比赛结束
