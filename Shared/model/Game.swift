@@ -109,7 +109,7 @@ class GameFromViewModel: ObservableObject {
     @Published var game_cum_duration: Float = 0 // 23 * 60 + 45
     
     //MARK: - 辅助：状态变化：显示马上更新，
-    @Published var counter_tap = 0 // 球员实时数据跟踪表
+//    @Published var counter_tap = 0 // 球员实时数据跟踪表
     
     @Published var counter_tap_subsititue = 0 // 替换球员表
     

@@ -62,13 +62,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                 .overlay(alignment: .trailing) {
                     Color.white.frame(width: 1, height: height, alignment: .trailing)
                 }
-//                .onReceive(NotificationCenter.default.publisher(for: .time_count)) { _ in
-//                    // 会造成重复计算，因此去掉
-//                    if playerLiveDataFromViewModel.isOnCourt {
-//                        // 变化会马上显示
-//                        playerLiveDataFromViewModel.time_cumulative += 1
-//                    }
-//                }
             
 
             Text(playerLiveDataFromViewModel.per)
@@ -128,12 +121,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let result = playerLiveDataFromViewModel.ft_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.ft_make_count = result >= 0 ? result : 0
                                 
-                                // 状态变化：马上显示
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toMake
-//                                NotificationCenter.default.post(name: .toMake, object: self)
-                                
                                 // 同步更新：表尾统计数据
                                 // 要点：索引
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_make_count += playerLiveDataFromViewModel.ft_make_count - old
@@ -174,12 +161,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let old = playerLiveDataFromViewModel.ft_miss_count
                                 let result = playerLiveDataFromViewModel.ft_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.ft_miss_count = result >= 0 ? result : 0
-                                
-                                // 状态变化
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toMiss
-//                                NotificationCenter.default.post(name: .toMiss, object: self)
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_miss_count += playerLiveDataFromViewModel.ft_miss_count - old
@@ -230,12 +211,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let result = playerLiveDataFromViewModel.fg2_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg2_make_count = result >= 0 ? result : 0
                                 
-                                // 状态变化
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toBucket
-//                                NotificationCenter.default.post(name: .toBucket, object: self)
-                                
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_make_count += playerLiveDataFromViewModel.fg2_make_count - old
                                 
@@ -274,12 +249,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let old = playerLiveDataFromViewModel.fg2_miss_count
                                 let result = playerLiveDataFromViewModel.fg2_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg2_miss_count = result >= 0 ? result : 0
-                                
-                                // 状态变化
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toBrick
-//                                NotificationCenter.default.post(name: .toBrick, object: self)
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_miss_count += playerLiveDataFromViewModel.fg2_miss_count - old
@@ -330,12 +299,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let result = playerLiveDataFromViewModel.fg3_make_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg3_make_count = result >= 0 ? result : 0
                                 
-                                // 状态变化
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toSwish
-//                                NotificationCenter.default.post(name: .toSwish, object: self)
-                                
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_make_count += playerLiveDataFromViewModel.fg3_make_count - old
                                 
@@ -374,12 +337,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 let old = playerLiveDataFromViewModel.fg3_miss_count
                                 let result = playerLiveDataFromViewModel.fg3_miss_count + self.gameFromViewModel.value
                                 playerLiveDataFromViewModel.fg3_miss_count = result >= 0 ? result : 0
-                                
-                                // 状态变化
-//                                self.gameFromViewModel.counter_tap += 1
-                                
-                                // 发出通知 toOff
-//                                NotificationCenter.default.post(name: .toOff, object: self)
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_miss_count += playerLiveDataFromViewModel.fg3_miss_count - old
@@ -459,12 +416,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let result = playerLiveDataFromViewModel.orebs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.orebs_count = result >= 0 ? result : 0
                         
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toBoard
-//                        NotificationCenter.default.post(name: .toBoard, object: self)
-                        
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.orebs_count += playerLiveDataFromViewModel.orebs_count - old
                         
@@ -497,12 +448,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let old = playerLiveDataFromViewModel.drebs_count
                         let result = playerLiveDataFromViewModel.drebs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.drebs_count = result >= 0 ? result : 0
-                        
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toGlass
-//                        NotificationCenter.default.post(name: .toGlass, object: self)
                         
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.drebs_count += playerLiveDataFromViewModel.drebs_count - old
@@ -537,12 +482,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let result = playerLiveDataFromViewModel.steals_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.steals_count = result >= 0 ? result : 0
                         
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toSteal
-//                        NotificationCenter.default.post(name: .toSteal, object: self)
-                        
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.steals_count += playerLiveDataFromViewModel.steals_count - old
                         
@@ -575,12 +514,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let old = playerLiveDataFromViewModel.blocks_count
                         let result = playerLiveDataFromViewModel.blocks_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.blocks_count = result >= 0 ? result : 0
-                        
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toBlock
-//                        NotificationCenter.default.post(name: .toBlock, object: self)
                         
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.blocks_count += playerLiveDataFromViewModel.blocks_count - old
@@ -616,11 +549,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         playerLiveDataFromViewModel.ties_count = result >= 0 ? result : 0
                         
                         // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toTie
-//                        NotificationCenter.default.post(name: .toTie, object: self)
-                        
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ties_count += playerLiveDataFromViewModel.ties_count - old
                         
@@ -653,12 +581,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let old = playerLiveDataFromViewModel.defs_count
                         let result = playerLiveDataFromViewModel.defs_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.defs_count = result >= 0 ? result : 0
-                        
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toTip
-//                        NotificationCenter.default.post(name: .toTip, object: self)
                         
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.defs_count += playerLiveDataFromViewModel.defs_count - old
@@ -693,12 +615,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let result = playerLiveDataFromViewModel.charges_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.charges_count = result >= 0 ? result : 0
                         
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toCharge
-//                        NotificationCenter.default.post(name: .toCharge, object: self)
-                        
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.charges_count += playerLiveDataFromViewModel.charges_count - old
                         
@@ -728,12 +644,6 @@ struct PlayerLiveDataRowOfGameTracker: View {
                         let old = playerLiveDataFromViewModel.tos_count
                         let result = playerLiveDataFromViewModel.tos_count + self.gameFromViewModel.value
                         playerLiveDataFromViewModel.tos_count = result >= 0 ? result : 0
-                        
-                        // 状态变化
-//                        self.gameFromViewModel.counter_tap += 1
-                        
-                        // 发出通知 toBad
-//                        NotificationCenter.default.post(name: .toBad, object: self)
                         
                         // 更新表尾统计数据
                         gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.tos_count += playerLiveDataFromViewModel.tos_count - old
