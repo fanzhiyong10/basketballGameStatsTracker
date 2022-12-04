@@ -8,16 +8,11 @@
 import SwiftUI
 
 struct SubstitutePlayersTableOfGameTracker: View {
-    //MARK: - 全局环境变量 状态控制
-//    @EnvironmentObject var mainStates: MainStateControl
-    
-    //MARK: -  我队的比赛数据 1.必须确保生成
-//    @Binding var liveDatas : [LiveData]
-    
     //MARK: -  我队的比赛数据 1.必须确保生成
     @ObservedObject var gameFromViewModel: GameFromViewModel
     
-//    @State var isTap = false
+    // 提示
+    @State private var alert_Not5Players = false
     
     var body: some View {
         HStack(alignment: .center) {
@@ -40,7 +35,7 @@ struct SubstitutePlayersTableOfGameTracker: View {
                                     .padding(.trailing, 30)
                             }
                         }
-                        .frame(width: 500, height: 60) // 行高
+                        .frame(width: 500, height: 48) // 行高 60
                         .font(.title)
                         .listRowSeparator(.hidden) // 行分割线：隐藏
                         .background { // 行背景色
@@ -53,7 +48,6 @@ struct SubstitutePlayersTableOfGameTracker: View {
                         .onTapGesture {
                             print("onTapGesture")
                             gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].isOnCourt_backup.toggle()
-//                            isTap.toggle()
                             gameFromViewModel.counter_tap_subsititue += 1
                         }
                     }
@@ -73,7 +67,7 @@ struct SubstitutePlayersTableOfGameTracker: View {
                         
                         Spacer()
                         
-                        Text("Players")
+                        Text("Substitue Players")
                             .font(.title)
                         
                         Spacer()
@@ -84,16 +78,11 @@ struct SubstitutePlayersTableOfGameTracker: View {
                             .padding(.trailing, 30)
                             .onTapGesture {
                                 // 保存
-                                self.save()
-                                
-                                // 关闭窗口
-                                self.gameFromViewModel.isOnPlayers.toggle()
+                                if self.save() == true {
+                                    // 成功保存：关闭窗口
+                                    self.gameFromViewModel.isOnPlayers.toggle()
+                                }
                             }
-
-//                        Text("DONE")
-//                            .font(.title)
-//                            .foregroundColor(Color.white)
-//                            .padding(.trailing, 30)
                     }
                     .frame(width: 500, height: 60) // 行高
                     .background(Color.orange)
@@ -108,6 +97,9 @@ struct SubstitutePlayersTableOfGameTracker: View {
             
             Spacer()
         }
+        .alert("Must be 5 players", isPresented: $alert_Not5Players, actions: {
+            
+        })
         
     }
     
@@ -118,8 +110,26 @@ struct SubstitutePlayersTableOfGameTracker: View {
         }
     }
     
-    // 保存
-    func save() {
+    /// 保存
+    ///
+    /// 入口保护条件
+    /// - 上场球员必须正好 5 人
+    func save() -> Bool {
+        // 入口条件
+        var counter_OnCourt = 0
+        
+        for index in 0...gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels.count-1 {
+            if gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].isOnCourt_backup == true {
+                counter_OnCourt += 1
+            }
+        }
+        
+        if counter_OnCourt != 5 {
+            // 请选择球员，场上球员必须5人
+            self.alert_Not5Players.toggle()
+            return false
+        }
+        
         // 1）保存
         for index in 0...gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels.count-1 {
             gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].isOnCourt = gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].isOnCourt_backup
@@ -139,6 +149,8 @@ struct SubstitutePlayersTableOfGameTracker: View {
             // 再排序：球员人名
             return $0.player < $1.player
         }
+        
+        return true
     }
 }
 
