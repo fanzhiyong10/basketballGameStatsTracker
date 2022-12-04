@@ -38,14 +38,11 @@ struct GameClockViewOfGameTracker: View {
                     .font(.system(size: 32))
                     .foregroundColor(.green)
                     .onReceive(timer) { time in
-                        if gameFromViewModel.started == true {
+                        if gameFromViewModel.started == true && gameFromViewModel.status_Game == 1 {
                             // 开始后，计时器：累加
                             gameFromViewModel.game_cum_duration += 1
                             
                             // 发出通知：场上球员累计计时
-                            // 注：通知的方式，会造成 主表和放大显示的表同时计算，重复计算，计算了2次，因此去掉
-//                            NotificationCenter.default.post(name: .time_count, object: self)
-                            
                             for (index, player) in gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels.enumerated() {
                                 if player.isOnCourt {
                                     gameFromViewModel.periodDataOfMyTeamFromViewModels.last!.playerLiveDataFromViewModels[index].time_cumulative += 1
