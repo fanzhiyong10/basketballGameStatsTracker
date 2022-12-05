@@ -126,6 +126,75 @@ class PlayerLiveDataFromViewModel: ObservableObject {
         
     }
     
+    init(pldfvm: PlayerLiveDataFromViewModel) {
+        self.id = pldfvm.id
+        self.id_period = pldfvm.id_period
+        self.id_player = pldfvm.id_player
+        self.player = pldfvm.player
+        self.number = pldfvm.number
+        self.time_cumulative = pldfvm.time_cumulative
+        self.ids_ItemLiveData = pldfvm.ids_ItemLiveData
+        
+        self.ft_make_count = pldfvm.ft_make_count
+        self.ft_miss_count = pldfvm.ft_miss_count
+        self.fg2_make_count = pldfvm.fg2_make_count
+        self.fg2_miss_count = pldfvm.fg2_miss_count
+        self.fg3_make_count = pldfvm.fg3_make_count
+        self.fg3_miss_count = pldfvm.fg3_miss_count
+        self.assts_count = pldfvm.assts_count
+        self.orebs_count = pldfvm.orebs_count
+        self.drebs_count = pldfvm.drebs_count
+        self.steals_count = pldfvm.steals_count
+        self.blocks_count = pldfvm.blocks_count
+        self.ties_count = pldfvm.ties_count
+        self.defs_count = pldfvm.defs_count
+        self.charges_count = pldfvm.charges_count
+        self.tos_count = pldfvm.tos_count
+    }
+    
+    func cleanData() {
+        self.time_cumulative = 0
+        self.ids_ItemLiveData = ""
+        
+        self.ft_make_count = 0
+        self.ft_miss_count = 0
+        self.fg2_make_count = 0
+        self.fg2_miss_count = 0
+        self.fg3_make_count = 0
+        self.fg3_miss_count = 0
+        self.assts_count = 0
+        self.orebs_count = 0
+        self.drebs_count = 0
+        self.steals_count = 0
+        self.blocks_count = 0
+        self.ties_count = 0
+        self.defs_count = 0
+        self.charges_count = 0
+        self.tos_count = 0
+    }
+    
+    // 合并数据
+    func unionPlayer(pldfvm: PlayerLiveDataFromViewModel) {
+        self.time_cumulative += pldfvm.time_cumulative
+        self.ids_ItemLiveData += pldfvm.ids_ItemLiveData
+        
+        self.ft_make_count += pldfvm.ft_make_count
+        self.ft_miss_count += pldfvm.ft_miss_count
+        self.fg2_make_count += pldfvm.fg2_make_count
+        self.fg2_miss_count += pldfvm.fg2_miss_count
+        self.fg3_make_count += pldfvm.fg3_make_count
+        self.fg3_miss_count += pldfvm.fg3_miss_count
+        self.assts_count += pldfvm.assts_count
+        self.orebs_count += pldfvm.orebs_count
+        self.drebs_count += pldfvm.drebs_count
+        self.steals_count += pldfvm.steals_count
+        self.blocks_count += pldfvm.blocks_count
+        self.ties_count += pldfvm.ties_count
+        self.defs_count += pldfvm.defs_count
+        self.charges_count += pldfvm.charges_count
+        self.tos_count += pldfvm.tos_count
+    }
+    
     func addItemLiveData(item: ItemLiveData) {
         switch item.name {
         case "ft_make":

@@ -123,13 +123,27 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 // 区分P1是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
                 if gameFromViewModel.perionds_highlight.contains(0) {
                     // 包含，改为：不选
-                    Button("Do Not Select P1", action: {
-                        gameFromViewModel.perionds_highlight.remove(0)
-                    })
+                    
+                    if gameFromViewModel.perionds_highlight.count == 1 {
+                        Button("At least one period must be selected", action: {
+                        })
+                    } else {
+                        Button("Do Not Select P1", action: {
+                            gameFromViewModel.perionds_highlight.remove(0)
+                            
+                            if gameFromViewModel.perionds_highlight.count >= 2 {
+                                gameFromViewModel.processMultiSelectPeriod()
+                            }
+                        })
+                    }
                 } else {
                     // 未包含，改为：选则
                     Button("Do Select P1", action: {
                         gameFromViewModel.perionds_highlight.insert(0)
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            gameFromViewModel.processMultiSelectPeriod()
+                        }
                     })
                 }
             }
@@ -220,13 +234,26 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 // 区分P2是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
                 if gameFromViewModel.perionds_highlight.contains(1) {
                     // 包含，改为：不选
-                    Button("Do Not Select P2", action: {
-                        gameFromViewModel.perionds_highlight.remove(1)
-                    })
+                    if gameFromViewModel.perionds_highlight.count == 1 {
+                        Button("At least one period must be selected", action: {
+                        })
+                    } else{
+                        Button("Do Not Select P2", action: {
+                            gameFromViewModel.perionds_highlight.remove(1)
+                            
+                            if gameFromViewModel.perionds_highlight.count >= 2 {
+                                gameFromViewModel.processMultiSelectPeriod()
+                            }
+                        })
+                    }
                 } else {
                     // 未包含，改为：选则
                     Button("Do Select P2", action: {
                         gameFromViewModel.perionds_highlight.insert(1)
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            gameFromViewModel.processMultiSelectPeriod()
+                        }
                     })
                 }
             }
@@ -318,13 +345,26 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 // 区分P3是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
                 if gameFromViewModel.perionds_highlight.contains(2) {
                     // 包含，改为：不选
-                    Button("Do Not Select P3", action: {
-                        gameFromViewModel.perionds_highlight.remove(2)
-                    })
+                    if gameFromViewModel.perionds_highlight.count == 1 {
+                        Button("At least one period must be selected", action: {
+                        })
+                    } else {
+                        Button("Do Not Select P3", action: {
+                            gameFromViewModel.perionds_highlight.remove(2)
+                            
+                            if gameFromViewModel.perionds_highlight.count >= 2 {
+                                gameFromViewModel.processMultiSelectPeriod()
+                            }
+                        })
+                    }
                 } else {
                     // 未包含，改为：选则
                     Button("Do Select P3", action: {
                         gameFromViewModel.perionds_highlight.insert(2)
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            gameFromViewModel.processMultiSelectPeriod()
+                        }
                     })
                 }
             }
@@ -416,13 +456,26 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 // 区分P4是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
                 if gameFromViewModel.perionds_highlight.contains(3) {
                     // 包含，改为：不选
-                    Button("Do Not Select P4", action: {
-                        gameFromViewModel.perionds_highlight.remove(3)
-                    })
+                    if gameFromViewModel.perionds_highlight.count == 1 {
+                        Button("At least one period must be selected", action: {
+                        })
+                    } else {
+                        Button("Do Not Select P4", action: {
+                            gameFromViewModel.perionds_highlight.remove(3)
+                            
+                            if gameFromViewModel.perionds_highlight.count >= 2 {
+                                gameFromViewModel.processMultiSelectPeriod()
+                            }
+                        })
+                    }
                 } else {
                     // 未包含，改为：选则
                     Button("Do Select P4", action: {
                         gameFromViewModel.perionds_highlight.insert(3)
+                        
+                        if gameFromViewModel.perionds_highlight.count >= 2 {
+                            gameFromViewModel.processMultiSelectPeriod()
+                        }
                     })
                 }
             }
@@ -458,202 +511,8 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 Text("Game is over")
             }
         })
-        .alert("O1 tapped", isPresented: $gameFromViewModel.tap_period5, actions: {
-            // 区分O1是否正在比赛：比赛中，比赛结束
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
-                // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
-                    
-                })
-            }
-            else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
-                // 区分O1是否正在比赛：比赛中：2个按钮
-                if gameFromViewModel.periodDataOfMyTeamFromViewModels.count < 5 { // O1 尚未开始
-                    
-                } else if gameFromViewModel.periodDataOfMyTeamFromViewModels.count == 5 { // O1：比赛中，比赛中的小节为数组中最后的小节
-                    // O1：比赛中，两种情况
-                    // 如果当前的高亮小节是O1，则有2个按钮。
-                    // 如果当前的高亮小节不是O1，则返回到O1，进行查看。
-                    
-                    if gameFromViewModel.perionds_highlight == [4] {
-                        // 如果当前的高亮小节是O1，则有2个按钮。
-                        // 第一个按钮：结束O1，开始O2
-                        Button("Stop O1，Start O2", role: .destructive, action: {
-                            // 开始下一个小节：O2
-                            gameFromViewModel.beginNextPeriod()
-                        })
-                        
-                        // 第二个按钮：结束比赛
-                        Button("Game Over", action: {
-                            gameFromViewModel.status_Game = 2 // 比赛结束
-                        })
-                    } else {
-                        // 仅一个按钮
-                        Button("Back to O1 Playing", role: .destructive, action: {
-                            // 切换到小节：O1
-                            // 高亮O1
-                            gameFromViewModel.perionds_highlight = [4]
-                        })
-                    }
-                } else { // O1已经比赛结束，但比赛尚未结束
-                    //O1已经比赛结束，但比赛尚未结束
-                    // 最想做的事情：切换小节，修改数据
-                    // 第一个按钮
-                    if gameFromViewModel.perionds_highlight == [4] {
-                        // O1已经高亮，再次点击
-                    } else {
-                        Button("View O1", role: .destructive, action: {
-                            // 切换到小节：O1
-                            gameFromViewModel.perionds_highlight = [4]
-                        })
-                    }
-                }
-                
-            } else if gameFromViewModel.status_Game == 2 { // 比赛结束
-                // 区分O1是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
-                if gameFromViewModel.perionds_highlight.contains(4) {
-                    // 包含，改为：不选
-                    Button("Do Not Select O1", action: {
-                        gameFromViewModel.perionds_highlight.remove(4)
-                    })
-                } else {
-                    // 未包含，改为：选则
-                    Button("Do Select O1", action: {
-                        gameFromViewModel.perionds_highlight.insert(4)
-                    })
-                }
-            }
-            
-            // 按钮Cancel，处理：比赛未开始，则不显示
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-            } else {
-                // 按钮：Cancel
-                Button("Cancel", role: .cancel, action: {})
-            }
-        }, message: {
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
-                Text("Game has not started yet, \nPlease click \"Start\" button to start game")
-            } else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
-                // 区分O1是否正在比赛：比赛中：2个按钮
-                if gameFromViewModel.periodDataOfMyTeamFromViewModels.count < 5 { // O1 尚未开始
-                    Text("O1 has not started yet, \nOnly after P4 ends, O1 can start")
-                } else if gameFromViewModel.periodDataOfMyTeamFromViewModels.count == 5 { // O1：比赛中
-                    // O1：比赛中
-                    Text("O1 is playing")
-                } else { // O1已经比赛结束，但比赛尚未结束
-                    //O1已经比赛结束，但比赛尚未结束
-                    if gameFromViewModel.perionds_highlight == [4] {
-                        // O1已经高亮，再次点击
-                        Text("You're Viewing O1")
-                    } else {
-                        Text("O1 is over")
-                    }
-                }
-            }
-            else if gameFromViewModel.status_Game == 2 { // 比赛结束
-                Text("Game is over")
-            }
-        })
-        .alert("O2 tapped", isPresented: $gameFromViewModel.tap_period6, actions: {
-            // 区分O2是否正在比赛：比赛中，比赛结束
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
-                // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
-                    
-                })
-            }
-            else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
-                // 区分O2是否正在比赛：比赛中：2个按钮
-                if gameFromViewModel.periodDataOfMyTeamFromViewModels.count < 6 { // O2 尚未开始
-                    
-                } else if gameFromViewModel.periodDataOfMyTeamFromViewModels.count == 6 { // O2：比赛中，比赛中的小节为数组中最后的小节
-                    // O2：比赛中，两种情况
-                    // 如果当前的高亮小节是O2，则有2个按钮。
-                    // 如果当前的高亮小节不是O2，则返回到O2，进行查看。
-                    
-                    if gameFromViewModel.perionds_highlight == [5] {
-                        // 如果当前的高亮小节是O2，则有2个按钮。
-                        // 第一个按钮：结束O2，开始O3
-                        Button("Stop O2，Start O3", role: .destructive, action: {
-                            // 开始下一个小节：O3
-                            gameFromViewModel.beginNextPeriod()
-                        })
-                        
-                        // 第二个按钮：结束比赛
-                        Button("Game Over", action: {
-                            gameFromViewModel.status_Game = 2 // 比赛结束
-                        })
-                    } else {
-                        // 仅一个按钮
-                        Button("Back to O2 Playing", role: .destructive, action: {
-                            // 切换到小节：O2
-                            // 高亮O2
-                            gameFromViewModel.perionds_highlight = [5]
-                        })
-                    }
-                } else { // O2已经比赛结束，但比赛尚未结束
-                    //O2已经比赛结束，但比赛尚未结束
-                    // 最想做的事情：切换小节，修改数据
-                    // 第一个按钮
-                    if gameFromViewModel.perionds_highlight == [5] {
-                        // O2已经高亮，再次点击
-                    } else {
-                        Button("View O2", role: .destructive, action: {
-                            // 切换到小节：O2
-                            gameFromViewModel.perionds_highlight = [5]
-                        })
-                    }
-                }
-                
-            } else if gameFromViewModel.status_Game == 2 { // 比赛结束
-                // 区分O2是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
-                if gameFromViewModel.perionds_highlight.contains(5) {
-                    // 包含，改为：不选
-                    Button("Do Not Select O2", action: {
-                        gameFromViewModel.perionds_highlight.remove(5)
-                    })
-                } else {
-                    // 未包含，改为：选则
-                    Button("Do Select O2", action: {
-                        gameFromViewModel.perionds_highlight.insert(5)
-                    })
-                }
-            }
-            
-            // 按钮Cancel，处理：比赛未开始，则不显示
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-            } else {
-                // 按钮：Cancel
-                Button("Cancel", role: .cancel, action: {})
-            }
-        }, message: {
-            if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
-                // 比赛尚未开始，提示，点击 Start 按钮开始比赛
-                Text("Game has not started yet, \nPlease click \"Start\" button to start game")
-            } else if gameFromViewModel.status_Game == 1 { // 比赛正在进行
-                // 区分O2是否正在比赛：比赛中：2个按钮
-                if gameFromViewModel.periodDataOfMyTeamFromViewModels.count < 6 { // O2 尚未开始
-                    Text("O2 has not started yet, \nOnly after O1 ends, O2 can start")
-                } else if gameFromViewModel.periodDataOfMyTeamFromViewModels.count == 6 { // O2：比赛中
-                    // O2：比赛中
-                    Text("O2 is playing")
-                } else { // O2已经比赛结束，但比赛尚未结束
-                    //O2已经比赛结束，但比赛尚未结束
-                    if gameFromViewModel.perionds_highlight == [5] {
-                        // O2已经高亮，再次点击
-                        Text("You're Viewing O2")
-                    } else {
-                        Text("O2 is over")
-                    }
-                }
-            }
-            else if gameFromViewModel.status_Game == 2 { // 比赛结束
-                Text("Game is over")
-            }
-        })
+        
+        
         
         
         

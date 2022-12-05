@@ -71,8 +71,6 @@ class GameFromViewModel: ObservableObject {
     // 辅助：我方
     @Published var periodDataOfMyTeamFromViewModels: [PeriodDataOfMyTeamFromViewModel] = [PeriodDataOfMyTeamFromViewModel]()
     
-    @Published var playerLiveDataFromViewModels: [PlayerLiveDataFromViewModel] = [PlayerLiveDataFromViewModel]()
-    
     // 辅助：对方
     @Published var periodDataOfOpponentTeamFromViewModels: [PeriodDataOfOpponentTeamFromViewModel] = [PeriodDataOfOpponentTeamFromViewModel]()
     
@@ -109,7 +107,7 @@ class GameFromViewModel: ObservableObject {
     @Published var game_cum_duration: Float = 0 // 23 * 60 + 45
     
     //MARK: - 辅助：状态变化：显示马上更新，
-//    @Published var counter_tap = 0 // 球员实时数据跟踪表
+    @Published var counter_tap = 0 // 球员实时数据跟踪表
     
     @Published var counter_tap_subsititue = 0 // 替换球员表
     
@@ -160,7 +158,7 @@ class GameFromViewModel: ObservableObject {
             self.name_opponent_team = game.name_opponent_team
             self.ids_PeriodDataOfMyTeam = game.ids_PeriodDataOfMyTeam
             self.ids_PeriodDataOfOpponentTeam = game.ids_PeriodDataOfOpponentTeam
-            
+            /*
             // 通知：统计计算
             NotificationCenter.default.addObserver(self, selector: #selector(toMake), name: .toMake, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(toMiss), name: .toMiss, object: nil)
@@ -177,6 +175,7 @@ class GameFromViewModel: ObservableObject {
             NotificationCenter.default.addObserver(self, selector: #selector(toTip), name: .toTip, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(toCharge), name: .toCharge, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(toTie), name: .toTie, object: nil)
+            */
         }
     }
     
@@ -192,10 +191,57 @@ class GameFromViewModel: ObservableObject {
         self.name_opponent_team = team.name
     }
     
-    // 表底：实时数据统计
-//    @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
-//    @Published var footer_totals: [PlayerLiveDataFromViewModel] = [PlayerLiveDataFromViewModel(total: "Total")]
+    //比赛结束后，多选小节，合并各个队员（id），合并。
+    @Published var playerLiveDataFromViewModels: [PlayerLiveDataFromViewModel] = [PlayerLiveDataFromViewModel]()
+        
+    @Published var footer_total: PlayerLiveDataFromViewModel = PlayerLiveDataFromViewModel(total: "Total")
 
+    ///比赛结束后，多选小节，合并各个队员（id），合并
+    ///
+    ///处理
+    ///- 合并队员：id相同的合并，sorted
+    ///- 合并队员的排序为得分
+    func processMultiSelectPeriod() {
+        // 表尾：清空数据
+        footer_total.cleanData()
+        
+        // 生成
+        playerLiveDataFromViewModels = [PlayerLiveDataFromViewModel]()
+        
+        // 合并数据
+        for index in self.perionds_highlight {
+            // 因为是class，所以需要重新生成，不修改原来的
+            // 排序
+            let sorted = self.periodDataOfMyTeamFromViewModels[index].playerLiveDataFromViewModels.sorted {
+                return $0.id_player < $1.id_player
+            }
+            
+            for item in sorted {
+                print("排序后的数据：")
+                print(item.id_player)
+            }
+            
+            // == 合并
+            if playerLiveDataFromViewModels.count == 0 {
+                // 第一个
+                for item in sorted {
+                    let pldfvm = PlayerLiveDataFromViewModel(pldfvm: item)
+                    playerLiveDataFromViewModels.append(pldfvm)
+                }
+            } else {
+                // 合并
+                for (index_sorted, item) in sorted.enumerated() {
+                    playerLiveDataFromViewModels[index_sorted].unionPlayer(pldfvm: item)
+                }
+            }
+            
+            // 表尾统计：合并
+            footer_total.unionPlayer(pldfvm: self.periodDataOfMyTeamFromViewModels[index].footer_total)
+        }
+        
+        print("")
+    }
+    
     /// 结束当前小节
     ///
     /// 存储当前小节的数据
@@ -300,7 +346,7 @@ class GameFromViewModel: ObservableObject {
             pld.id_my_team = self.id_my_team
             pld.id_period = periodDataOfMyTeam.id
             
-            pld.id_player = pldfvm.id
+            pld.id_player = pldfvm.id_player
             pld.name_player = pldfvm.player
             pld.number = pldfvm.number
             pld.isOnCourt = pldfvm.isOnCourt

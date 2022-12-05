@@ -27,6 +27,7 @@ extension Notification.Name {
 }
 
 extension GameFromViewModel {
+    /*
     /// 统计计算：ft_make_count
     @objc func toMake() {
         print("toMake")
@@ -178,4 +179,5 @@ extension GameFromViewModel {
         }
         self.periodDataOfMyTeamFromViewModels[perionds_highlight.first!].footer_total.ties_count = result
     }
+    */
 }

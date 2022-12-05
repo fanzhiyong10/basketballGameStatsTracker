@@ -125,6 +125,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 // 要点：索引
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_make_count += playerLiveDataFromViewModel.ft_make_count - old
                                 
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
+                                
                                 // 提示声音
                                 self.playSound()
                             }
@@ -164,6 +167,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.ft_miss_count += playerLiveDataFromViewModel.ft_miss_count - old
+                                
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
                                 
                                 // 提示声音
                                 self.playSound()
@@ -214,6 +220,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_make_count += playerLiveDataFromViewModel.fg2_make_count - old
                                 
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
+                                
                                 // 提示声音
                                 self.playSound()
                             }
@@ -252,6 +261,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg2_miss_count += playerLiveDataFromViewModel.fg2_miss_count - old
+                                
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
                                 
                                 // 提示声音
                                 self.playSound()
@@ -302,6 +314,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_make_count += playerLiveDataFromViewModel.fg3_make_count - old
                                 
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
+                                
                                 // 提示声音
                                 self.playSound()
                             }
@@ -340,6 +355,9 @@ struct PlayerLiveDataRowOfGameTracker: View {
                                 
                                 // 更新表尾统计数据
                                 gameFromViewModel.periodDataOfMyTeamFromViewModels[gameFromViewModel.perionds_highlight.first!].footer_total.fg3_miss_count += playerLiveDataFromViewModel.fg3_miss_count - old
+                                
+                                // 跟踪数据变化，两队小节表的数据跟着变化
+                                gameFromViewModel.counter_tap += 1
                                 
                                 // 提示声音
                                 self.playSound()

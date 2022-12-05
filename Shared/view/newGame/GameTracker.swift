@@ -185,7 +185,7 @@ struct GameTracker: View {
                                 }
                                 
                                 // 比赛刚开始，仅一个小节，球员数据就是 小节1 的数据
-                                self.gameFromViewModel.playerLiveDataFromViewModels = self.gameFromViewModel.periodDataOfMyTeamFromViewModels[0].playerLiveDataFromViewModels
+//                                self.gameFromViewModel.playerLiveDataFromViewModels = self.gameFromViewModel.periodDataOfMyTeamFromViewModels[0].playerLiveDataFromViewModels
                                 
                             } catch {
                                 print("\(error)")
