@@ -86,7 +86,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
                 // 比赛尚未开始，提示，点击 Start 按钮开始比赛
                 // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
+                Button("First To Start Game", role: .destructive, action: {
                     
                 })
             }
@@ -125,10 +125,10 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                     // 包含，改为：不选
                     
                     if gameFromViewModel.perionds_highlight.count == 1 {
-                        Button("At least one period must be selected", action: {
+                        Button("At least one period must be selected", role: .destructive, action: {
                         })
                     } else {
-                        Button("Do Not Select P1", action: {
+                        Button("Do Not Select P1", role: .destructive, action: {
                             gameFromViewModel.perionds_highlight.remove(0)
                             
                             if gameFromViewModel.perionds_highlight.count >= 2 {
@@ -138,7 +138,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                     }
                 } else {
                     // 未包含，改为：选则
-                    Button("Do Select P1", action: {
+                    Button("Do Select P1", role: .destructive, action: {
                         gameFromViewModel.perionds_highlight.insert(0)
                         
                         if gameFromViewModel.perionds_highlight.count >= 2 {
@@ -183,7 +183,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
                 // 比赛尚未开始，提示，点击 Start 按钮开始比赛
                 // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
+                Button("First To Start Game", role: .destructive, action: {
                     
                 })
             }
@@ -232,29 +232,35 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 
             } else if gameFromViewModel.status_Game == 2 { // 比赛结束
                 // 区分P2是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
-                if gameFromViewModel.perionds_highlight.contains(1) {
-                    // 包含，改为：不选
-                    if gameFromViewModel.perionds_highlight.count == 1 {
-                        Button("At least one period must be selected", action: {
-                        })
-                    } else{
-                        Button("Do Not Select P2", action: {
-                            gameFromViewModel.perionds_highlight.remove(1)
+                if gameFromViewModel.perionds_highlight.count < 2 {
+                    // 比赛结束，P2没有进行比赛
+                    Button("P2 didn't play", role: .destructive, action: {
+                    })
+                } else {
+                    if gameFromViewModel.perionds_highlight.contains(1) {
+                        // 包含，改为：不选
+                        if gameFromViewModel.perionds_highlight.count == 1 {
+                            Button("At least one period must be selected", role: .destructive, action: {
+                            })
+                        } else{
+                            Button("Do Not Select P2", role: .destructive, action: {
+                                gameFromViewModel.perionds_highlight.remove(1)
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    gameFromViewModel.processMultiSelectPeriod()
+                                }
+                            })
+                        }
+                    } else {
+                        // 未包含，改为：选则
+                        Button("Do Select P2", role: .destructive, action: {
+                            gameFromViewModel.perionds_highlight.insert(1)
                             
                             if gameFromViewModel.perionds_highlight.count >= 2 {
                                 gameFromViewModel.processMultiSelectPeriod()
                             }
                         })
                     }
-                } else {
-                    // 未包含，改为：选则
-                    Button("Do Select P2", action: {
-                        gameFromViewModel.perionds_highlight.insert(1)
-                        
-                        if gameFromViewModel.perionds_highlight.count >= 2 {
-                            gameFromViewModel.processMultiSelectPeriod()
-                        }
-                    })
                 }
             }
             
@@ -294,7 +300,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
                 // 比赛尚未开始，提示，点击 Start 按钮开始比赛
                 // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
+                Button("First To Start Game", role: .destructive, action: {
                     
                 })
             }
@@ -343,30 +349,37 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 
             } else if gameFromViewModel.status_Game == 2 { // 比赛结束
                 // 区分P3是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
-                if gameFromViewModel.perionds_highlight.contains(2) {
-                    // 包含，改为：不选
-                    if gameFromViewModel.perionds_highlight.count == 1 {
-                        Button("At least one period must be selected", action: {
-                        })
+                if gameFromViewModel.perionds_highlight.count < 3 {
+                    // 比赛结束，P3没有进行比赛
+                    Button("P3 didn't play", role: .destructive, action: {
+                    })
+                } else {
+                    if gameFromViewModel.perionds_highlight.contains(2) {
+                        // 包含，改为：不选
+                        if gameFromViewModel.perionds_highlight.count == 1 {
+                            Button("At least one period must be selected", role: .destructive, action: {
+                            })
+                        } else {
+                            Button("Do Not Select P3", role: .destructive, action: {
+                                gameFromViewModel.perionds_highlight.remove(2)
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    gameFromViewModel.processMultiSelectPeriod()
+                                }
+                            })
+                        }
                     } else {
-                        Button("Do Not Select P3", action: {
-                            gameFromViewModel.perionds_highlight.remove(2)
+                        // 未包含，改为：选则
+                        Button("Do Select P3", role: .destructive, action: {
+                            gameFromViewModel.perionds_highlight.insert(2)
                             
                             if gameFromViewModel.perionds_highlight.count >= 2 {
                                 gameFromViewModel.processMultiSelectPeriod()
                             }
                         })
                     }
-                } else {
-                    // 未包含，改为：选则
-                    Button("Do Select P3", action: {
-                        gameFromViewModel.perionds_highlight.insert(2)
-                        
-                        if gameFromViewModel.perionds_highlight.count >= 2 {
-                            gameFromViewModel.processMultiSelectPeriod()
-                        }
-                    })
                 }
+               
             }
             
             // 按钮Cancel，处理：比赛未开始，则不显示
@@ -405,7 +418,7 @@ struct TeamPeriodScoreTableOfGameTracker: View {
             if gameFromViewModel.status_Game == 0 { // 比赛尚未开始
                 // 比赛尚未开始，提示，点击 Start 按钮开始比赛
                 // 第二个按钮：结束比赛
-                Button("First To Start Game", action: {
+                Button("First To Start Game", role: .destructive, action: {
                     
                 })
             }
@@ -454,29 +467,35 @@ struct TeamPeriodScoreTableOfGameTracker: View {
                 
             } else if gameFromViewModel.status_Game == 2 { // 比赛结束
                 // 区分P4是否正在比赛：比赛结束，一个按钮，选中(若未选中)或者取消(若已选中)
-                if gameFromViewModel.perionds_highlight.contains(3) {
-                    // 包含，改为：不选
-                    if gameFromViewModel.perionds_highlight.count == 1 {
-                        Button("At least one period must be selected", action: {
-                        })
+                if gameFromViewModel.perionds_highlight.count < 4 {
+                    // 比赛结束，P4没有进行比赛
+                    Button("P4 didn't play", role: .destructive, action: {
+                    })
+                } else {
+                    if gameFromViewModel.perionds_highlight.contains(3) {
+                        // 包含，改为：不选
+                        if gameFromViewModel.perionds_highlight.count == 1 {
+                            Button("At least one period must be selected", role: .destructive, action: {
+                            })
+                        } else {
+                            Button("Do Not Select P4", role: .destructive, action: {
+                                gameFromViewModel.perionds_highlight.remove(3)
+                                
+                                if gameFromViewModel.perionds_highlight.count >= 2 {
+                                    gameFromViewModel.processMultiSelectPeriod()
+                                }
+                            })
+                        }
                     } else {
-                        Button("Do Not Select P4", action: {
-                            gameFromViewModel.perionds_highlight.remove(3)
+                        // 未包含，改为：选则
+                        Button("Do Select P4", role: .destructive, action: {
+                            gameFromViewModel.perionds_highlight.insert(3)
                             
                             if gameFromViewModel.perionds_highlight.count >= 2 {
                                 gameFromViewModel.processMultiSelectPeriod()
                             }
                         })
                     }
-                } else {
-                    // 未包含，改为：选则
-                    Button("Do Select P4", action: {
-                        gameFromViewModel.perionds_highlight.insert(3)
-                        
-                        if gameFromViewModel.perionds_highlight.count >= 2 {
-                            gameFromViewModel.processMultiSelectPeriod()
-                        }
-                    })
                 }
             }
             
